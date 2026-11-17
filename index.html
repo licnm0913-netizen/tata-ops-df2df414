@@ -69,7 +69,7 @@ main{padding:16px 28px 30px;max-width:1640px;margin:0 auto}
 .mid{font-size:20px;font-weight:780;letter-spacing:-.3px}
 .pi{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;font-size:13px;font-weight:850;color:#fff;flex:none}
 .pi.sm{width:18px;height:18px;border-radius:6px;font-size:10.5px;vertical-align:-4px;margin-right:4px}
-.pi.mt{background:var(--mt);color:#111}.pi.tb{background:var(--tb)}.pi.xhs{background:var(--xhs)}.pi.dy{background:var(--dy)}.pi.dp{background:var(--dp)}
+.pi.mt{background:var(--mt);color:#111}.pi.tb{background:var(--tb)}.pi.xhs{background:var(--xhs)}.pi.dy{background:var(--dy)}.pi.dp{background:var(--dp)}.pi.wx{background:#07C160}
 .split{display:flex;gap:12px;font-size:12px;color:#4F5A50;flex-wrap:wrap;align-items:center}
 .hbar{height:8px;background:var(--soft2);border-radius:999px;overflow:hidden}
 .hbar i{display:block;height:100%;width:0;border-radius:999px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
@@ -162,7 +162,7 @@ function int(n){return Math.round(n).toLocaleString('zh-CN')}
 function fmtv(v,f){return f==='money'?money(v):f==='money0'?money(v,0):f==='pct'?v.toFixed(1)+'%':f==='dec1'?v.toFixed(1):int(v)}
 function cnt(v,fmt,miss){if(!isNum(v))return '<span class="miss">'+(miss||'未读到')+'</span>';return '<span class="num" data-count="'+v+'" data-fmt="'+(fmt||'int')+'">'+fmtv(0,fmt)+'</span>'}
 function show(v,fmt,miss){return isNum(v)?fmtv(v,fmt):'<span class="miss">'+(miss||'未读到')+'</span>'}
-function PI(k,sm){k={xiaohongshu:'xhs',douyin:'dy',dianping:'dp'}[k]||k;var t={mt:'美',tb:'淘',xhs:'书',dy:'抖',dp:'点'}[k];return '<span class="pi '+k+(sm?' sm':'')+'">'+t+'</span>'}
+function PI(k,sm){k={xiaohongshu:'xhs',douyin:'dy',dianping:'dp',miniapp:'wx'}[k]||k;var t={mt:'美',tb:'淘',xhs:'书',dy:'抖',dp:'点',wx:'微'}[k];return '<span class="pi '+k+(sm?' sm':'')+'">'+t+'</span>'}
 function card(cls,icon,title,tag,body,style){return '<section class="card '+cls+'"'+(style?' style="'+style+'"':'')+'><div class="ch"><h3>'+(icon?'<span class="ic">'+icon+'</span>':'')+title+'</h3>'+(tag?'<span class="tag">'+tag+'</span>':'')+'</div>'+body+'</section>'}
 function hbar(pct,color,h){pct=Math.max(0,Math.min(100,pct||0));return '<div class="hbar"'+(h?' style="height:'+h+'px"':'')+'><i style="--w:'+pct+'%;background:'+color+'"></i></div>'}
 function ring(val,target,color,size,label,cap){var r=62,C=2*Math.PI*r,ratio=isNum(val)?Math.min(val/target,1):0;
@@ -208,12 +208,14 @@ function vHome(){
   '<div class="tiles t3" style="margin-top:2px;gap:6px">'+[['收入',l.month.income],['支出',l.month.expense],['利润',l.month.profit]].map(function(x,i){return '<div class="tile" style="padding:8px 9px"><div class="l">'+(i?x[0]:l.month.month.slice(5)+'月'+x[0])+'</div><div class="v num" style="font-size:13.5px'+(i===2?';color:'+(x[1]<0?'#B5543C':'#2E8B57'):'')+'">'+money(x[1],0)+'</div></div>'}).join('')+'</div>'+
   (l.missing_fixed.length?'<div class="note" style="margin-top:6px">'+l.missing_fixed.map(function(x){return x.label}).join('、')+'还没入账</div>':''))
   : card('c3','💼','财务快照','未导入','<div class="ph"><div class="nc">账本未导入</div></div>');
- var soc=function(k,name){var d=D.social[k];return '<div class="row" style="padding:9px 0">'+PI(k)+'<div class="grow1"><b style="font-size:13px">'+name+'</b><div class="note">'+(d?esc(d.updated||''):'未接入')+'</div></div><div style="text-align:right"><div class="lbl">粉丝</div><div style="font-weight:780">'+(d?cnt(d.followers):'<span class="nc">未接入</span>')+'</div></div><div style="text-align:right;min-width:52px"><div class="lbl">净增</div><div style="font-weight:780">'+(d?cnt(d.net):'<span class="nc">未接入</span>')+'</div></div></div>'};
- g+=card('c3','📱','社媒','粉丝 · 净增',soc('xiaohongshu','小红书')+soc('douyin','抖音')+
-  '<div class="ph" style="margin-top:10px;padding:10px 12px"><div class="lbl">粉丝 / 净增趋势 · 最新内容</div><div class="note">接入后显示，现在不放任何数字</div></div>');
- var R=D.reputation,rr=function(k,name,o){var has=o&&isNum(o.shop_score),dl=has&&isNum(o.shop_score_prev)?o.shop_score-o.shop_score_prev:null;
-  return '<div class="row" style="padding:9px 0">'+PI(k)+'<div class="grow1"><div style="font-size:13px;font-weight:700">'+name+'</div><div class="note">'+(o?(isNum(o.rating)?'评分 '+o.rating.toFixed(1):'评分 未读到'):'未接入')+(dl!=null?' · <span style="color:'+(dl>0?'#2E8B57':dl<0?'#D9573A':'#7A847B')+'">'+(dl>0?'↑'+dl:dl<0?'↓'+(-dl):'持平')+'</span>':'')+'</div></div><div class="big" style="font-size:26px">'+(has?cnt(o.shop_score):o?'<span class="miss" style="font-size:13px">未读到</span>':'<span class="nc" style="font-size:13px">未接入</span>')+'</div></div>'};
- g+=card('c3','⭐','平台评分','店铺分',rr('mt','美团外卖',R.meituan)+rr('tb','淘宝闪购',R.taobao)+rr('dp','大众点评',R.dianping));
+ var soc=function(k,name){var d=D.social[k];return '<div class="row" style="padding:8px 0">'+PI(k)+'<div class="grow1"><b style="font-size:13px">'+name+'</b><div class="note">'+(d?esc((d.posts!=null?'作品 '+d.posts:'')+(d.likes!=null?' · 获赞 '+d.likes:'')):(k==='miniapp'?'计划中 · 未接入':'未接入'))+'</div></div><div style="text-align:right"><div class="lbl">粉丝</div><div style="font-weight:780">'+(d?cnt(d.followers):'<span class="nc">未接入</span>')+'</div></div><div style="text-align:right;min-width:52px"><div class="lbl">净增</div><div style="font-weight:780">'+(d&&isNum(d.net)?cnt(d.net):'<span class="nc">未接入</span>')+'</div></div></div>'};
+ var dy=D.social.douyin,lt=dy&&dy.latest;
+ g+=card('c3','📱','社媒','粉丝 · 净增',soc('xiaohongshu','小红书')+soc('douyin','抖音')+soc('miniapp','微信小程序')+
+  '<div class="ph" style="margin-top:8px;padding:9px 12px"><div class="lbl">最新内容</div><div class="note">'+(lt?PI('dy',1)+esc(lt.date)+' '+esc(lt.type)+'「'+esc(lt.title)+'」':'未接入')+'</div></div>');
+ var R=D.reputation,rr=function(k,name,o){var sc=o?(isNum(o.shop_score)?o.shop_score:(isNum(o.rating)&&k==='dp'?o.rating:null)):null,isR=o&&!isNum(o.shop_score)&&k==='dp',dl=o&&isNum(o.shop_score)&&isNum(o.shop_score_prev)?o.shop_score-o.shop_score_prev:null;
+  var sub=!o?'未接入':k==='dp'?('评价 '+(isNum(o.reviews)?o.reviews+' 条':'未读到')+(isNum(o.avg_price)?' · 人均 ¥'+o.avg_price:'')):(isNum(o.rating)?'评分 '+o.rating.toFixed(1):'评分 未读到');
+  return '<div class="row" style="padding:9px 0">'+PI(k)+'<div class="grow1"><div style="font-size:13px;font-weight:700">'+name+'</div><div class="note">'+sub+(dl!=null?' · <span style="color:'+(dl>0?'#2E8B57':dl<0?'#D9573A':'#7A847B')+'">'+(dl>0?'↑'+dl:dl<0?'↓'+(-dl):'持平')+'</span>':'')+'</div></div><div style="text-align:right"><div class="big" style="font-size:26px">'+(sc!=null?cnt(sc,isR?'dec1':'int'):o?'<span class="miss" style="font-size:13px">未读到</span>':'<span class="nc" style="font-size:13px">未接入</span>')+'</div><div class="note" style="font-size:10.5px">'+(isR?'星级':'店铺分')+'</div></div></div>'};
+ g+=card('c3','⭐','平台评分','店铺分 · 星级',rr('mt','美团外卖',R.meituan)+rr('tb','淘宝闪购',R.taobao)+rr('dp','大众点评',R.dianping));
  var top=D.dishes.items[0],pf=(D.dishes.profit&&D.dishes.profit.items||[]).filter(function(x){return x.name===top.name})[0],cum=D.dishes.cumulative.items.filter(function(x){return x.name===top.name})[0];
  g+=card('c3','🏆','今日爆款','出餐第 1',
   '<div style="font-size:14.5px;font-weight:800;line-height:1.35">'+esc(top.name)+'</div><div style="display:flex;align-items:baseline;gap:8px;margin:6px 0 4px"><span class="big">'+cnt(top.total)+'</span><span class="note">份</span><span class="split" style="margin-left:6px">'+PI('mt',1)+top.mt+' '+PI('tb',1)+top.tb+'</span></div>'+
@@ -302,18 +304,28 @@ function vMkt(){var pm=D.promo,b=D.bounty,g='<div class="grid">';
  return g+'</div>'}
 /* ================= 社媒·口碑 ================= */
 function vSocial(){var g='<div class="sec" style="margin-top:4px">社媒</div><div class="grid">';
- var one=function(k,name,tiles,how){var d=D.social[k];
-  if(!d)return card('c6','',PI(k)+' '+name,'未接入','<div class="ph"><div class="tiles t4">'+tiles.map(function(t){return '<div><div class="lbl">'+t+'</div><div class="mid nc" style="margin-top:4px">未接入</div></div>'}).join('')+'</div><div style="height:84px;display:grid;place-items:center;margin-top:12px;border-top:1px dashed #D3DACC" class="note">粉丝 / 净增趋势 · 最新内容（接入后显示）</div><p class="note" style="margin:6px 0 0">接入方式：'+how+'</p></div>');
-  return card('c6','',PI(k)+' '+name,esc(d.updated||''),'<div class="tiles t4">'+[['followers','粉丝'],['net','净增'],['posts',tiles[2]],['engagement',tiles[3]]].map(function(x){return '<div class="tile"><div class="l">'+x[1]+'</div><div class="v num">'+cnt(d[x[0]])+'</div></div>'}).join('')+'</div>'+(d.note?'<p class="note">'+esc(d.note)+'</p>':''))};
- g+=one('xiaohongshu','小红书',['粉丝','净增','笔记','互动（赞藏评）'],'data.json 的 social.xiaohongshu 写 {followers, net, posts, engagement, updated, note}；来自小红书专业号后台或每日抄数。');
- g+=one('douyin','抖音',['粉丝','净增','作品','互动（赞评转）'],'data.json 的 social.douyin 写 {followers, net, posts, engagement, updated, note}；来自抖音创作者中心 / 抖音来客。');
+ var ph=function(k,name,tiles,how,tag){return card('c4','',PI(k)+' '+name,tag||'未接入','<div class="ph"><div class="tiles t2">'+tiles.map(function(t){return '<div><div class="lbl">'+t+'</div><div class="mid nc" style="margin-top:4px">未接入</div></div>'}).join('')+'</div><p class="note" style="margin:10px 0 0">'+how+'</p></div>')};
+ var dy=D.social.douyin;
+ g+=D.social.xiaohongshu?'':ph('xiaohongshu','小红书',['粉丝','净增','笔记','互动（赞藏评）'],'需要登录小红书专业号后台才能读。接入后写 social.xiaohongshu：{followers, net, posts, engagement, updated, note}。');
+ if(dy){g+=card('c4','',PI('dy')+' 抖音',esc(dy.updated||''),'<div class="note" style="margin:-4px 0 10px">'+esc(dy.account||'')+(dy.handle?' · 抖音号 '+esc(dy.handle):'')+'</div><div class="tiles t2">'+[['followers','粉丝'],['net','净增'],['posts','作品'],['likes','获赞']].map(function(x){return '<div class="tile"><div class="l">'+x[1]+'</div><div class="v num">'+(isNum(dy[x[0]])?cnt(dy[x[0]]):'<span class="nc">未接入</span>')+'</div></div>'}).join('')+'</div>'+
+  (dy.latest?'<div class="tile" style="margin-top:10px;background:#F2F3F6"><div class="l">最新作品 · '+esc(dy.latest.date)+' · '+esc(dy.latest.type)+'</div><div style="font-weight:750;margin-top:4px">「'+esc(dy.latest.title)+'」</div></div>':'')+'<p class="note" style="margin:10px 0 0">'+esc(dy.note||'')+'</p>')}
+ else g+=ph('douyin','抖音',['粉丝','净增','作品','获赞'],'接入后写 social.douyin。');
+ g+=D.social.miniapp?'':ph('miniapp','微信小程序',['访问','下单'],'计划中的数据源，还没接入。接入后写 social.miniapp。','计划中 · 未接入');
  g+='</div><div class="sec">口碑评分</div><div class="grid">';
  var r=D.reputation,delta=function(a,b){if(!isNum(a)||!isNum(b))return '';var d=a-b;return '<span style="font-size:12px;color:'+(d>0?'#2E8B57':d<0?'#D9573A':'#7A847B')+';margin-left:6px">'+(d>0?'↑'+d:d<0?'↓'+(-d):'持平')+'</span>'};
- var plat=function(k,nm,o){return card('c4','',PI(k)+' '+nm,'店铺分 & 评分','<div class="tiles t3"><div class="tile"><div class="l">店铺分</div><div class="v num">'+cnt(o.shop_score)+delta(o.shop_score,o.shop_score_prev)+'</div></div><div class="tile"><div class="l">评分</div><div class="v num">'+cnt(o.rating,'dec1')+'</div></div><div class="tile"><div class="l">评价数</div><div class="v num">'+cnt(o.reviews)+'</div></div></div>'+(isNum(o.shop_score)?'<div style="margin:14px 0 6px;font-size:12px">店铺分 / 100</div>'+hbar(o.shop_score,'#8EE6A0'):'')+'<p class="note" style="margin:8px 0 0">'+esc(o.note)+'</p>')};
+ var plat=function(k,nm,o){return card('c3','',PI(k)+' '+nm,'店铺分 & 评分','<div class="tiles t3"><div class="tile"><div class="l">店铺分</div><div class="v num">'+cnt(o.shop_score)+delta(o.shop_score,o.shop_score_prev)+'</div></div><div class="tile"><div class="l">评分</div><div class="v num">'+cnt(o.rating,'dec1')+'</div></div><div class="tile"><div class="l">评价数</div><div class="v num">'+cnt(o.reviews)+'</div></div></div>'+(isNum(o.shop_score)?'<div style="margin:14px 0 6px;font-size:12px">店铺分 / 100</div>'+hbar(o.shop_score,'#8EE6A0'):'')+'<p class="note" style="margin:8px 0 0">'+esc(o.note)+'</p>')};
+ var dp=r.dianping;
+ if(dp){var rec=(dp.recommended||[]),rm=Math.max.apply(null,rec.map(function(x){return x.n||0}).concat([1]));
+  g+=card('c6','',PI('dp')+' 大众点评 · '+esc(dp.name||''),esc(dp.updated||''),
+  '<div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap"><div style="flex:1;min-width:240px"><div style="display:flex;align-items:baseline;gap:8px"><span class="hero-n" style="font-size:56px">'+cnt(dp.rating,'dec1')+'</span><span class="note">星级</span></div>'+
+  '<div class="tiles t3" style="margin-top:12px">'+[['口味',dp.taste],['环境',dp.env],['服务',dp.service]].map(function(x){return '<div class="tile"><div class="l">'+x[0]+'</div><div class="v num">'+cnt(x[1],'dec1')+'</div></div>'}).join('')+'</div>'+
+  '<div class="tiles t3" style="margin-top:10px"><div class="tile"><div class="l">评价</div><div class="v num">'+cnt(dp.reviews)+' 条</div></div><div class="tile"><div class="l">人均</div><div class="v num">'+(isNum(dp.avg_price)?'¥'+dp.avg_price:'<span class="miss">未读到</span>')+'</div></div><div class="tile"><div class="l">到店</div><div class="v num">'+cnt(dp.visits)+'</div></div></div>'+
+  (dp.rank?'<div class="pill g" style="display:inline-block;margin-top:12px">🏅 '+esc(dp.rank)+'</div>':'')+'</div>'+
+  '<div style="flex:1;min-width:220px"><div class="lbl" style="margin-bottom:6px">推荐菜</div>'+rec.map(function(x){return '<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:12.5px"><span>'+esc(x.name)+'</span><b>'+(isNum(x.n)?x.n+' 人推荐':'<span class="nc" style="font-weight:600">未显示人数</span>')+'</b></div>'+(isNum(x.n)?hbar(x.n/rm*100,'#FF6633',6):'')+'</div>'}).join('')+
+  '<div class="tile" style="margin-top:12px"><div class="l">评价正文</div><div class="v" style="font-size:14px">'+(dp.review_text?esc(dp.review_text):'<span class="miss">未读到</span>')+'</div></div></div></div><p class="note" style="margin:10px 0 0">'+esc(dp.note||'')+'</p>')}
+ else g+=card('c6','',PI('dp')+' 大众点评','未接入','<div class="ph"><div class="nc">未接入</div></div>');
  g+=plat('mt','美团外卖',r.meituan)+plat('tb','淘宝闪购',r.taobao);
- g+=r.dianping?card('c4','',PI('dp')+' 大众点评','','<div class="tiles t3"><div class="tile"><div class="l">星级</div><div class="v num">'+cnt(r.dianping.rating,'dec1')+'</div></div><div class="tile"><div class="l">评价数</div><div class="v num">'+cnt(r.dianping.reviews)+'</div></div><div class="tile"><div class="l">分项</div><div class="v">'+esc(r.dianping.sub||'—')+'</div></div></div>')
-  :card('c4','',PI('dp')+' 大众点评','未接入','<div class="ph"><div class="tiles t3"><div><div class="lbl">星级</div><div class="mid nc">未接入</div></div><div><div class="lbl">评价数</div><div class="mid nc">未接入</div></div><div><div class="lbl">分项</div><div class="mid nc">未接入</div></div></div><p class="note" style="margin:10px 0 0">接入后写 reputation.dianping：{rating, reviews, sub, updated, note}。</p></div>');
- g+=card('c12','📝','说明','','<p class="note" style="margin:0">'+esc(r.note||'')+' 社媒没接入前一律显示「未接入」，不估算、不填 0。</p>');
+ g+=card('c12','📝','说明','','<p class="note" style="margin:0">'+esc(r.note||'')+' '+esc(D.social.note||'')+' 没接入的一律显示「未接入」，不估算、不填 0。</p>');
  return g+'</div>'}
 
 /* ================= 菜品 ================= */

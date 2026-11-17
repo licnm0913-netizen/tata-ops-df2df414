@@ -857,12 +857,67 @@
    "reviews": null,
    "note": "淘宝首页截图 85（页面文字读成 850）"
   },
-  "dianping": null,
-  "note": "店铺分取自两个平台的商家首页；美团评分 4.3（首页）。评价数尚未拉取，显示「未读到」；大众点评未接入。"
+  "dianping": {
+   "name": "HerDeserve她她",
+   "url": "https://www.dianping.com/shop/k4X5SAobbmfFm9xC",
+   "rating": 4.4,
+   "taste": 4.4,
+   "env": 4.4,
+   "service": 4.4,
+   "sub": "口味 4.4 / 环境 4.4 / 服务 4.4",
+   "reviews": 50,
+   "avg_price": 32,
+   "rank": "历下区西餐新店榜第2名",
+   "visits": 96,
+   "recommended": [
+    {
+     "name": "大虾沙拉",
+     "n": 6
+    },
+    {
+     "name": "咖喱饭",
+     "n": 5
+    },
+    {
+     "name": "鸡排饭",
+     "n": 5
+    },
+    {
+     "name": "鸡排沙拉",
+     "n": 4
+    },
+    {
+     "name": "流心北非蛋饭",
+     "n": null
+    }
+   ],
+   "review_text": null,
+   "updated": "11-17 东京 14:30 读取",
+   "note": "评价正文网页端不显示，未读到。"
+  },
+  "note": "店铺分取自两个平台的商家首页；美团评分 4.3（首页）。美团/淘宝评价数尚未拉取，显示「未读到」。大众点评 11-17 东京 14:30 读取。"
  },
  "social": {
   "xiaohongshu": null,
-  "douyin": null
+  "douyin": {
+   "account": "HerDeserve她她",
+   "handle": "HerDeserve",
+   "url": "https://www.douyin.com/user/MS4wLjABAAAAe79io0A5ZIp5EAAJQ5II2sqdQQ2Wbtl-94Q_4ddKHe4",
+   "followers": 4,
+   "net": null,
+   "posts": 7,
+   "likes": 19,
+   "engagement": null,
+   "latest": {
+    "date": "10-08",
+    "type": "图文",
+    "title": "做一家懂女生的轻食店"
+   },
+   "updated": "11-17 东京 14:30 读取",
+   "note": "数字取自抖音搜索卡片：作品 7、粉丝 4、获赞 19；首次读数，净增要等下次读数后才有。"
+  },
+  "miniapp": null,
+  "note": "小红书需要登录才能读，未接入；微信小程序是计划中的数据源，未接入。"
  },
  "alerts": [
   "美团推广余额 ¥0.05、淘宝 ¥0.00，自动充值都没开；美团 11-14 起连续第 4 天零投流",
