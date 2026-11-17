@@ -4,376 +4,424 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>她她经营作战台</title>
-<meta name="description" content="她她 HerDeserve 外卖经营监控台">
-<meta name="theme-color" content="#111613">
+<meta name="description" content="她她 HerDeserve 经营作战台：外卖、营销、社媒、菜品、成本、财务">
+<meta name="theme-color" content="#F4F5F0">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="她她作战台">
 <meta name="format-detection" content="telephone=no">
 <style>
-:root{--ink:#111613;--bg:#F2F4EE;--card:#FFFFFF;--line:#E3E8DD;--muted:#6E796C;--soft:#F6F8F2;
---yellow:#E6FB4D;--coral:#FF875F;--mint:#9DFB8D;--purple:#BDA6FF;--lime:#C4D23A;--mt:#FFC300;--tb:#FF6A2B;--green:#2E8B57;--red:#D9573A;
---r:18px;--sh:0 1px 2px rgba(17,22,19,.05),0 6px 20px rgba(17,22,19,.05)}
+:root{--ink:#141A16;--bg:#F4F5F0;--card:#fff;--line:#E8EBE3;--muted:#7A847B;--soft:#F6F7F3;--soft2:#EEF1E8;
+--mt:#FFC300;--tb:#FF6A2B;--xhs:#FF2442;--dy:#161823;--dp:#FF6633;--r:22px;--sh:0 1px 2px rgba(20,26,22,.04),0 10px 30px rgba(20,26,22,.05)}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink)}
 body{font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",system-ui,-apple-system,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom)}
 .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
-button{font:inherit;cursor:pointer}
-/* top bar */
-.top{position:sticky;top:0;z-index:20;background:var(--ink);color:#F4F6EF;padding:calc(10px + env(safe-area-inset-top)) 22px 0}
-.top-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;min-width:0}
-.brand img{height:22px;display:block}
-.brand b{font-size:17px;letter-spacing:.5px;white-space:nowrap}.brand b i{font-style:normal;color:var(--yellow)}
-.live{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--mint);border:1px solid rgba(157,251,141,.35);padding:3px 9px;border-radius:999px;white-space:nowrap}
-.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);animation:pulse 1.6s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(157,251,141,.7)}70%{box-shadow:0 0 0 8px rgba(157,251,141,0)}100%{box-shadow:0 0 0 0 rgba(157,251,141,0)}}
-.clock{margin-left:auto;text-align:right;line-height:1.25}
-.clock .t{font-size:20px;font-weight:700}.clock .t small{font-size:11px;color:var(--mint);font-weight:400;margin-left:4px}
-.clock .s{font-size:11px;color:#A9B3AA}
-.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-top:10px}.tabs::-webkit-scrollbar{display:none}
-.tab{border:0;background:transparent;color:#AEB8AF;padding:11px 16px 12px;font-size:14px;font-weight:650;border-bottom:3px solid transparent;white-space:nowrap}
-.tab.on{color:#fff;border-bottom-color:var(--yellow)}
-.tab .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#59645B;margin-left:6px;vertical-align:middle}
-.tab .dot.ok{background:var(--mint)}
-/* control bar */
-.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 22px;background:#fff;border-bottom:1px solid var(--line)}
-.seg{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px}
-.seg button{border:0;background:transparent;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:650;color:#4B564C}
-.seg button.on{background:var(--ink);color:#fff}
-.pill{font-size:11.5px;padding:5px 10px;border-radius:999px;background:#FFF4D6;color:#7A5B00;white-space:nowrap}
-.pill.g{background:#E9F8E4;color:#2B6B35}
+button{font:inherit;cursor:pointer;color:inherit}
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) 28px 10px}
+.top-row{display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.brand img{height:19px;display:block}.brand b{font-size:15px;font-weight:750;white-space:nowrap}
+.brand .live{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:#2E8B57;background:#E9F7EC;padding:3px 8px;border-radius:999px}
+.brand .live:before{content:"";width:6px;height:6px;border-radius:50%;background:#35B26B;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(53,178,107,.6)}70%{box-shadow:0 0 0 7px rgba(53,178,107,0)}100%{box-shadow:0 0 0 0 rgba(53,178,107,0)}}
+.tabs{display:flex;gap:2px;background:var(--soft2);padding:4px;border-radius:999px;overflow-x:auto;scrollbar-width:none;margin:0 auto}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:transparent;padding:8px 17px;border-radius:999px;font-size:13.5px;font-weight:650;color:#5C665D;white-space:nowrap;transition:background .2s}
+.tab.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.right{display:flex;align-items:center;gap:14px;flex:none}
+.clock{text-align:right;line-height:1.2}.clock .t{font-size:17px;font-weight:750}.clock .t small{font-size:10.5px;color:var(--muted);font-weight:500;margin-left:3px}.clock .s{font-size:10.5px;color:var(--muted)}
+.icon-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:650}
+.icon-btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sub{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 28px 0;max-width:1640px;margin:0 auto}
+.sub .ttl{font-size:22px;font-weight:800;letter-spacing:-.3px;margin-right:6px}
+.pill{font-size:11.5px;padding:5px 11px;border-radius:999px;background:#FFF4D6;color:#7A5B00;white-space:nowrap}
+.pill.g{background:#E9F7EC;color:#23663A}.pill.r{background:#FDECE7;color:#9A3418}.pill.n{background:var(--soft2);color:#4F5A50}
 .upd{font-size:12px;color:var(--muted);margin-left:auto}
-.btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:650}
-.btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
-.ticker{overflow:hidden;white-space:nowrap;background:#1C221F;color:#E8EDE3;font-size:12.5px;padding:7px 0}
-.ticker span{display:inline-block;padding-left:100%;animation:tick 48s linear infinite}
-.ticker em{font-style:normal;color:var(--yellow);margin:0 10px 0 28px}
+.seg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;padding:6px 13px;border-radius:999px;font-size:12.5px;font-weight:650;color:#4F5A50}
+.seg button.on{background:var(--ink);color:#fff}
+.ticker{order:9;flex:1 1 100%;overflow:hidden;white-space:nowrap;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12.5px;padding:7px 0;color:#3F4A41}
+@media(min-width:1200px){.ticker{order:0;flex:1 1 260px;min-width:200px}.upd{order:1;width:100%;margin-left:0;text-align:right;margin-top:-4px}}
+.alerts2{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+@media(max-width:760px){.alerts2{grid-template-columns:1fr}}
+.home .card{padding:18px 20px}.home .ch{margin-bottom:10px}
+.ticker span{display:inline-block;padding-left:100%;animation:tick 55s linear infinite}
+.ticker em{font-style:normal;color:#D9573A;margin:0 8px 0 26px}
 @keyframes tick{to{transform:translateX(-100%)}}
-/* layout */
-main{padding:16px 22px 28px;max-width:1680px;margin:0 auto}
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+main{padding:16px 28px 30px;max-width:1640px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
 .c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
-.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:16px 18px;min-width:0;border:1px solid #EDF0E8;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px;min-width:0;position:relative;opacity:0;transform:translateY(12px);transition:opacity .55s,transform .55s}
 .go .card{opacity:1;transform:none}
-.card h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px}
-.card h3 .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--soft);font-size:14px}
-.ch{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.tag{font-size:11px;color:var(--muted);background:var(--soft);border-radius:999px;padding:3px 9px}
-.note{font-size:11.5px;color:var(--muted);line-height:1.6}
-.miss{color:#B5543C;font-weight:650}
-.nc{color:#8A938A;font-weight:650}
-/* KPI */
-.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-bottom:14px}.kpis.kpis4{grid-template-columns:repeat(4,minmax(0,1fr))}
-.kpi{position:relative;overflow:hidden;padding:14px 16px 10px}
-.kpi .k{font-size:12.5px;color:var(--muted);font-weight:650;display:flex;justify-content:space-between;align-items:center}
-.kpi .v{font-size:clamp(22px,2.1vw,30px);font-weight:800;letter-spacing:-.5px;margin:6px 0 4px}
-.kpi .split{display:flex;gap:10px;font-size:11.5px;color:#4B564C;flex-wrap:wrap}
-.kpi .n{font-size:10.5px;color:var(--muted);line-height:1.4;margin-top:5px;min-height:28px}
-.kpi:after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--acc,var(--yellow))}
-.badge{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:5px;font-size:10.5px;font-weight:800;color:#111;margin-right:4px;vertical-align:-3px}
-.b-mt{background:var(--mt)}.b-tb{background:var(--tb);color:#fff}
-.spark{display:block;width:100%;height:30px;margin-top:4px}
-.spark rect{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-.go .spark rect{transform:scaleY(1)}
-/* bars generic */
-.hbar{height:10px;background:#EEF1EA;border-radius:999px;overflow:hidden}
+.ch{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.ch h3{margin:0;font-size:14.5px;font-weight:750;display:flex;align-items:center;gap:9px}
+.ch h3 .ic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--soft2);font-size:14px}
+.tag{font-size:11px;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.note{font-size:11.5px;color:var(--muted);line-height:1.65}
+.miss{color:#B5543C;font-weight:650}.nc{color:#9AA39A;font-weight:650}
+.lbl{font-size:12px;color:var(--muted);font-weight:600}
+.hero-n{font-size:clamp(52px,5.2vw,78px);font-weight:850;letter-spacing:-2px;line-height:1}
+.big{font-size:clamp(26px,2.3vw,34px);font-weight:820;letter-spacing:-.6px;line-height:1.1}
+.mid{font-size:20px;font-weight:780;letter-spacing:-.3px}
+.pi{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;font-size:13px;font-weight:850;color:#fff;flex:none}
+.pi.sm{width:18px;height:18px;border-radius:6px;font-size:10.5px;vertical-align:-4px;margin-right:4px}
+.pi.mt{background:var(--mt);color:#111}.pi.tb{background:var(--tb)}.pi.xhs{background:var(--xhs)}.pi.dy{background:var(--dy)}.pi.dp{background:var(--dp)}
+.split{display:flex;gap:12px;font-size:12px;color:#4F5A50;flex-wrap:wrap;align-items:center}
+.hbar{height:8px;background:var(--soft2);border-radius:999px;overflow:hidden}
 .hbar i{display:block;height:100%;width:0;border-radius:999px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
 .go .hbar i{width:var(--w)}
-/* trend */
-.trend svg{width:100%;height:auto;display:block}
-.trend .bars rect{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-.go .trend .bars rect{transform:scaleY(1)}
-.trend .line{stroke-dasharray:2000;stroke-dashoffset:2000;transition:stroke-dashoffset 1.6s ease .2s}
-.go .trend .line{stroke-dashoffset:0}
-.tip{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;border-top:1px solid var(--line);padding-top:10px;margin-top:4px}
-/* rings */
-.rings{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.stack{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--soft2)}
+.stack i{display:block;height:100%}
+svg .grow{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.go svg .grow{transform:scaleY(1)}
+svg .draw{stroke-dasharray:2400;stroke-dashoffset:2400;transition:stroke-dashoffset 1.6s ease .2s}
+.go svg .draw{stroke-dashoffset:0}
 .ring circle.f{transition:stroke-dashoffset 1.3s cubic-bezier(.2,.8,.2,1)}
-/* table */
+.tiles{display:grid;gap:10px}.t2{grid-template-columns:repeat(2,minmax(0,1fr))}.t3{grid-template-columns:repeat(3,minmax(0,1fr))}.t4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.tile{background:var(--soft);border-radius:16px;padding:12px 14px;min-width:0}
+.tile .l{font-size:11.5px;color:var(--muted)}.tile .v{font-size:19px;font-weight:800;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;margin-bottom:16px}
+.kpis.k4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kpi{padding:16px 18px 12px}
+.kpi .k{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted);font-weight:650}
+.kpi .v{font-size:clamp(23px,2vw,30px);font-weight:820;letter-spacing:-.5px;margin:8px 0 6px}
+.kpi .n{font-size:10.5px;color:var(--muted);line-height:1.45;margin-top:6px}
+.kpi .dot{width:9px;height:9px;border-radius:50%;background:var(--acc)}
+.spark{display:block;width:100%;height:30px;margin-top:6px}
 table.t{width:100%;border-collapse:collapse;font-size:12.5px}
-table.t th{font-weight:650;color:var(--muted);text-align:right;padding:6px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
-table.t td{text-align:right;padding:6px 6px;border-bottom:1px solid #F0F3EC}
+table.t th{font-weight:650;color:var(--muted);text-align:right;padding:7px 6px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:11.5px}
+table.t td{text-align:right;padding:8px 6px;border-bottom:1px solid #F1F3EE}
 table.t th:first-child,table.t td:first-child{text-align:left}
-table.t tr.hl td{font-weight:800;background:#FAFDE6}
-/* funnel */
-.fun .st{margin:8px 0}
-.fun .st .lab{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
-.fun .st .hbar{height:26px;border-radius:10px}
-.fun .st .hbar i{border-radius:10px}
-/* flywheel */
-.fly .path{stroke-dasharray:800;stroke-dashoffset:800;animation:draw 2.2s ease forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-/* placeholders */
-.ph{border:1.5px dashed #CBD3C5;border-radius:14px;padding:14px;background:repeating-linear-gradient(45deg,#FAFBF8,#FAFBF8 10px,#F5F7F2 10px,#F5F7F2 20px)}
-.ph .big{font-size:22px;font-weight:800;color:#8A938A}
-.mtiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
-.mt{background:var(--soft);border-radius:12px;padding:10px 12px}.mt .l{font-size:11.5px;color:var(--muted)}.mt .v{font-size:20px;font-weight:800;margin-top:3px}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:650;color:#4B564C}
+table.t tr.hl td{font-weight:800;background:#FAFDEB}
+.tw{overflow-x:auto}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F1F3EE}
+.row:last-child{border-bottom:0}.row .grow1{flex:1;min-width:0}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);font-size:12.5px;line-height:1.55}
+.alert:last-child{border-bottom:0}
+.alert b.d{flex:none;width:8px;height:8px;border-radius:50%;margin-top:6px;background:#D9573A}
+.ph{border:1.5px dashed #D3DACC;border-radius:16px;padding:12px 14px;background:repeating-linear-gradient(45deg,#FBFCF9,#FBFCF9 10px,#F6F8F3 10px,#F6F8F3 20px)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:650;color:#4F5A50}
 .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.dish{display:grid;grid-template-columns:26px minmax(0,1fr) 56px;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid #F0F3EC}
-.dish .rk{font-weight:800;color:#9AA49A;font-size:12px}
-.dish .nm{font-size:13px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dish .meta{font-size:11px;color:var(--muted);margin:2px 0 4px}
-.dish .tot{text-align:right;font-size:18px;font-weight:800}
-details.foot{margin-top:14px;background:#fff;border-radius:var(--r);border:1px solid #EDF0E8;padding:12px 16px}
+.dish{display:grid;grid-template-columns:26px minmax(0,1fr) 56px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #F1F3EE}
+.dish .rk{font-weight:800;color:#A3ACA3;font-size:12px}.dish .nm{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dish .meta{font-size:11px;color:var(--muted);margin:3px 0 5px}.dish .tot{text-align:right;font-size:19px;font-weight:820}
+.sec{font-size:13px;font-weight:750;color:#4F5A50;margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+.sec:after{content:"";flex:1;height:1px;background:var(--line)}
+details.foot{margin-top:16px;background:#fff;border-radius:var(--r);padding:14px 20px;box-shadow:var(--sh)}
 details.foot summary{cursor:pointer;font-weight:650;font-size:13px}
 details.foot p{font-size:11.5px;color:var(--muted);line-height:1.8;margin:8px 0 0}
-.err{background:#FDECE7;color:#8A2E17;padding:10px 22px;font-size:13px;display:none}
-.hint{font-size:12px;color:#4B564C;background:#FFFBE6;border:1px solid #F3E5A2;border-radius:12px;padding:8px 12px;margin:0 22px 0;display:none}
-/* responsive */
-@media (max-width:1280px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:1100px){.c3,.c4,.c5{grid-column:span 6}.c7,.c8{grid-column:span 12}}
+.err{background:#FDECE7;color:#8A2E17;padding:10px 28px;font-size:13px;display:none}
+.hint{font-size:12px;color:#4F5A50;background:#FFFBE6;border:1px solid #F3E5A2;border-radius:12px;padding:8px 12px;margin:12px 28px 0;display:none}
+@media (max-width:1280px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.tab{padding:8px 12px}}
+@media (max-width:1100px){.c3,.c4,.c5{grid-column:span 6}.c6,.c7,.c8{grid-column:span 12}.top-row{flex-wrap:wrap}.tabs{order:3;width:100%;margin:0}}
 @media (max-width:760px){
- .top{padding:calc(8px + env(safe-area-inset-top)) 14px 0}.brand img{height:17px}.brand b{font-size:15px}
- .clock .t{font-size:16px}.clock .s{display:none}.live{display:none}
- .tab{padding:9px 12px 10px;font-size:13.5px}
- .bar{padding:10px 14px;gap:8px}.upd{margin-left:0;width:100%}
- main{padding:12px 12px 24px}.grid{gap:12px}
+ .top{padding:calc(8px + env(safe-area-inset-top)) 14px 8px}.brand img{height:15px}.brand b{font-size:13.5px}.brand .live{display:none}
+ .clock .t{font-size:15px}.clock .s{display:none}.right{gap:8px;margin-left:auto}#refresh{display:none}
+ .tabs{border-radius:14px}.tab{padding:7px 12px;font-size:13px}
+ .sub{padding:12px 14px 0;gap:8px}.sub .ttl{font-size:19px}.upd{margin-left:0;width:100%}
+ .hint{margin:10px 14px 0}
+ main{padding:12px 14px 26px}.grid{gap:12px}
  .c3,.c4,.c5,.c6,.c7,.c8,.c12{grid-column:span 12}
- .kpis,.kpis.kpis4{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .kpi .v{font-size:23px}.card{padding:14px}
- .mtiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .kpis,.kpis.k4{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .card{padding:16px}.hero-n{font-size:58px}.t4{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .herosplit{flex-direction:column;align-items:stretch!important}.herosplit .tiles{min-width:0!important}
 }
 </style>
 </head>
 <body>
 <header class="top">
  <div class="top-row">
-  <div class="brand"><img src="icons/logo-wordmark.png" alt="HerDeserve"><b>经营作战台<i>↗</i></b><span class="live">LIVE</span></div>
-  <div class="clock"><div class="t num"><span id="clk">--:--:--</span><small>东京</small></div><div class="s num" id="clk2">济南 --:--</div></div>
+  <div class="brand"><img src="icons/logo-wordmark-dark.png" alt="HerDeserve"><b>经营作战台</b><span class="live">LIVE</span></div>
+  <nav class="tabs" id="tabs"></nav>
+  <div class="right">
+   <div class="clock"><div class="t num"><span id="clk">--:--:--</span><small>东京</small></div><div class="s num" id="clk2">济南 --:--</div></div>
+   <button class="icon-btn" id="refresh" title="重新拉取 data.json">刷新</button>
+   <button class="icon-btn dark" id="install" style="display:none">安装</button>
+  </div>
  </div>
- <nav class="tabs" id="tabs"></nav>
 </header>
-<div class="bar">
- <div class="seg" id="seg-period"></div>
- <div class="seg" id="seg-plat"></div>
- <span class="pill" id="status">加载中…</span>
- <span class="upd" id="upd">更新时间：—</span>
- <button class="btn" id="refresh" title="重新拉取 data.json">刷新</button>
- <button class="btn dark" id="install" style="display:none">安装到桌面</button>
-</div>
-<div class="ticker" id="ticker"><span id="tick-inner"></span></div>
 <div class="err" id="err"></div>
 <div class="hint" id="hint"></div>
+<div class="sub"><div id="sub" style="display:contents"></div><div class="ticker"><span id="tick-inner"></span></div></div>
 <main id="main"></main>
 <script>
 (function(){
 'use strict';
-var D=null, S={tab:'biz',period:'today',plat:'all',metric:'orders',hover:null,dcat:'全部'};
-var TABS=[['biz','外卖经营',1],['ads','投流与营销',1],['social','社媒',0],['rep','口碑评分',1],['dish','菜品',1]];
-var PERIODS=[['today','今日'],['week','本周'],['month','本月']], PLATS=[['all','合计'],['mt','美团'],['tb','淘宝闪购']];
+var D=null,S={tab:'home',period:'today',plat:'all',metric:'orders',hover:null,dcat:'全部'};
+var TABS=[['home','总览'],['biz','经营'],['mkt','营销'],['social','社媒·口碑'],['dish','菜品'],['cost','成本'],['fin','财务']];
 var $=function(id){return document.getElementById(id)};
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function money(n){return '¥'+Number(n).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2})}
-function int(n){return Math.round(n).toLocaleString('zh-CN')}
 function isNum(v){return typeof v==='number'&&isFinite(v)}
-function cnt(v,fmt,miss){ if(!isNum(v)) return '<span class="miss">'+(miss||'未读到')+'</span>';
-  return '<span class="num" data-count="'+v+'" data-fmt="'+(fmt||'int')+'">'+fmtv(0,fmt)+'</span>'}
-function fmtv(v,f){return f==='money'?money(v):f==='pct'?v.toFixed(1)+'%':f==='dec1'?v.toFixed(1):int(v)}
-var BM='<span class="badge b-mt">美</span>', BT='<span class="badge b-tb">淘</span>';
+function money(n,dp){dp=dp==null?2:dp;var s=Math.abs(n).toLocaleString('zh-CN',{minimumFractionDigits:dp,maximumFractionDigits:dp});return (n<0?'−':'')+'¥'+s}
+function int(n){return Math.round(n).toLocaleString('zh-CN')}
+function fmtv(v,f){return f==='money'?money(v):f==='money0'?money(v,0):f==='pct'?v.toFixed(1)+'%':f==='dec1'?v.toFixed(1):int(v)}
+function cnt(v,fmt,miss){if(!isNum(v))return '<span class="miss">'+(miss||'未读到')+'</span>';return '<span class="num" data-count="'+v+'" data-fmt="'+(fmt||'int')+'">'+fmtv(0,fmt)+'</span>'}
+function show(v,fmt,miss){return isNum(v)?fmtv(v,fmt):'<span class="miss">'+(miss||'未读到')+'</span>'}
+function PI(k,sm){k={xiaohongshu:'xhs',douyin:'dy',dianping:'dp'}[k]||k;var t={mt:'美',tb:'淘',xhs:'书',dy:'抖',dp:'点'}[k];return '<span class="pi '+k+(sm?' sm':'')+'">'+t+'</span>'}
+function card(cls,icon,title,tag,body,style){return '<section class="card '+cls+'"'+(style?' style="'+style+'"':'')+'><div class="ch"><h3>'+(icon?'<span class="ic">'+icon+'</span>':'')+title+'</h3>'+(tag?'<span class="tag">'+tag+'</span>':'')+'</div>'+body+'</section>'}
+function hbar(pct,color,h){pct=Math.max(0,Math.min(100,pct||0));return '<div class="hbar"'+(h?' style="height:'+h+'px"':'')+'><i style="--w:'+pct+'%;background:'+color+'"></i></div>'}
+function ring(val,target,color,size,label,cap){var r=62,C=2*Math.PI*r,ratio=isNum(val)?Math.min(val/target,1):0;
+ return '<svg class="ring" viewBox="0 0 160 '+(cap?186:160)+'" width="'+(size||160)+'"><circle cx="80" cy="80" r="62" fill="none" stroke="#EEF1E8" stroke-width="14"/>'+
+ '<circle class="f" cx="80" cy="80" r="62" fill="none" stroke="'+color+'" stroke-width="14" stroke-linecap="round" stroke-dasharray="'+C.toFixed(2)+'" stroke-dashoffset="'+C.toFixed(2)+'" data-off="'+(C*(1-ratio)).toFixed(2)+'" transform="rotate(-90 80 80)"/>'+
+ '<text x="80" y="82" text-anchor="middle" font-size="27" font-weight="850" fill="#141A16">'+(isNum(val)?(val/target*100).toFixed(1)+'%':'—')+'</text><text x="80" y="104" text-anchor="middle" font-size="11.5" fill="#7A847B">'+esc(label||'')+'</text>'+
+ (cap?'<text x="80" y="180" text-anchor="middle" font-size="12" fill="#141A16">'+esc(cap)+'</text>':'')+'</svg>'}
+function spark(vals,color,hi){var w=300,h=30,n=vals.length,mx=Math.max.apply(null,vals.map(function(v){return v||0}).concat([1])),bw=w/n;
+ return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none">'+vals.map(function(v,i){var hh=v==null?2:Math.max(1.5,(v/mx)*(h-2));
+ return '<rect class="grow" x="'+(i*bw+1)+'" y="'+(h-hh)+'" width="'+(bw-3)+'" height="'+hh+'" rx="2" fill="'+(v==null?'#DCE1D6':color)+'" opacity="'+(i===hi?1:.5)+'" style="transition-delay:'+(i*25)+'ms"/>'}).join('')+'</svg>'}
 function P(){return D.periods[S.period]}
 function sumP(k){var p=P();return (S.plat!=='tb'?p.mt[k]:0)+(S.plat!=='mt'?p.tb[k]:0)}
-function expense(){var p=P();return S.plat==='all'?p.expense_all:S.plat==='mt'?p.mt.expense:p.tb.expense}
-function bounty(){var p=P(); if(S.plat==='tb') return 0; return p.bounty}
-function ads(){var a=P().ads; if(S.plat==='mt') return a.mt; if(S.plat==='tb') return a.tb; return (isNum(a.mt)&&isNum(a.tb))?a.mt+a.tb:null}
-function after(){var a=P().after; if(!a) return null; return a[S.plat]}
+function platName(){return S.plat==='all'?'合计':S.plat==='mt'?'美团':'淘宝闪购'}
 function pick(o){return S.plat==='all'?o.all:S.plat==='mt'?o.mt:o.tb}
-function daySeries(fn){return D.days.map(fn)}
-function spark(vals,color,hiIdx){var w=300,h=30,n=vals.length,mx=Math.max.apply(null,vals.map(function(v){return v||0}).concat([1])),bw=w/n;
- return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none">'+vals.map(function(v,i){var hh=v==null?2:Math.max(1,(v/mx)*(h-2));
-  return '<rect x="'+(i*bw+1)+'" y="'+(h-hh)+'" width="'+(bw-3)+'" height="'+hh+'" rx="2" fill="'+(v==null?'#D9DED3':color)+'" opacity="'+(i===hiIdx?1:.55)+'" style="transition-delay:'+(i*25)+'ms"/>'}).join('')+'</svg>'}
-function card(cls,icon,title,tag,body){return '<section class="card '+cls+'"><div class="ch"><h3><span class="ic">'+icon+'</span>'+title+'</h3>'+(tag?'<span class="tag">'+tag+'</span>':'')+'</div>'+body+'</section>'}
-function hbar(pct,color){pct=Math.max(0,Math.min(100,pct));return '<div class="hbar"><i style="--w:'+pct+'%;background:'+color+'"></i></div>'}
-function ring(val,target,color,label,cap){var r=66,C=2*Math.PI*r,ratio=isNum(val)?Math.min(val/target,1):0;
- return '<div class="ring" style="text-align:center"><svg viewBox="0 0 210 190" width="100%"><circle cx="105" cy="88" r="66" fill="none" stroke="#EEF1EA" stroke-width="16"/>'+
- '<circle class="f" cx="105" cy="88" r="66" fill="none" stroke="'+color+'" stroke-width="16" stroke-linecap="round" stroke-dasharray="'+C.toFixed(2)+'" stroke-dashoffset="'+C.toFixed(2)+'" data-off="'+(C*(1-ratio)).toFixed(2)+'" transform="rotate(-90 105 88)"/>'+
- '<text x="105" y="88" text-anchor="middle" font-size="30" font-weight="800" fill="#111613">'+(isNum(val)?(val/target*100).toFixed(1)+'%':'—')+'</text><text x="105" y="111" text-anchor="middle" font-size="12.5" fill="#6E796C">'+esc(label)+'</text>'+
- '<text x="105" y="182" text-anchor="middle" font-size="12" fill="#111613">'+esc(cap)+'</text></svg></div>'}
+function L(){return D.ledger||null}
+function lcat(M,name){var c=(M.categories||[]).filter(function(x){return x.name===name})[0];return c?c.amount:null}
+function md(s){return s?s.slice(5):''}
 
-/* ---------- tab: 外卖经营 ---------- */
+/* ================= 总览 ================= */
+function vHome(){
+ var t=D.periods.today,w=D.periods.week,m=D.periods.month,ord=t.mt.orders+t.tb.orders,g='<div class="grid home">',days=D.days,N=days.length;
+ var bars=days.map(function(d){return d.mo+d.to}),mx=Math.max.apply(null,bars.concat([45])),H=46,W=560,bw=W/N,y41=H-41/mx*H;
+ var mini='<svg viewBox="0 0 '+W+' '+(H+14)+'" width="100%" style="display:block;margin-top:12px">'+
+  '<line x1="0" x2="'+W+'" y1="'+y41+'" y2="'+y41+'" stroke="#2E8B57" stroke-dasharray="4 5"/>'+
+  bars.map(function(v,i){var h=Math.max(2,v/mx*H);return '<rect class="grow" x="'+(i*bw+4)+'" y="'+(H-h)+'" width="'+(bw-8)+'" height="'+h+'" rx="3" fill="'+(i===N-1?'#141A16':v>=41?'#8EE6A0':'#D4F04C')+'" style="transition-delay:'+(i*30)+'ms"/><text x="'+(i*bw+bw/2)+'" y="'+(H+12)+'" text-anchor="middle" font-size="9.5" fill="#9AA39A">'+days[i].date.slice(3)+'</text>'}).join('')+
+  '<text x="'+W+'" y="'+(y41-4)+'" text-anchor="end" font-size="10" fill="#2E8B57">保本线 41</text></svg>';
+ g+=card('c6','🛵','今日外卖','美团 + 淘宝闪购',
+  '<div class="herosplit" style="display:flex;gap:18px;align-items:center;justify-content:space-between"><div style="min-width:0;flex:1">'+
+  '<div class="lbl">有效单量</div><div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><span class="hero-n">'+cnt(ord)+'</span><span style="font-size:15px;color:var(--muted)">单</span>'+
+  '<span class="split" style="margin-left:10px"><span>'+PI('mt',1)+t.mt.orders+'</span><span>'+PI('tb',1)+t.tb.orders+'</span></span></div>'+
+  '<div class="tiles t3" style="margin-top:14px;min-width:340px"><div class="tile"><div class="l">实付 / 营业额</div><div class="v num">'+cnt(t.mt.gmv+t.tb.gmv,'money')+'</div></div><div class="tile"><div class="l">到手</div><div class="v num">'+cnt(t.mt.income+t.tb.income,'money')+'</div></div><div class="tile"><div class="l">扣赏金投流后</div><div class="v num">'+cnt(t.after?t.after.all:null,'money','未汇总')+'</div></div></div>'+
+  '</div><div style="text-align:center;flex:none">'+ring(ord,41,'#141A16',132,'保本线 41 单')+'<div class="note" style="margin-top:-6px">还差 <b style="color:#141A16">'+Math.max(0,41-ord)+'</b> 单</div></div></div>'+mini,
+  'background:linear-gradient(135deg,#FFFFFF 0%,#FAFDEE 100%)');
+ var mp=m.progress,wp=w.progress;
+ g+=card('c3','📅','本月进度','41 单 × 天',
+  '<div class="lbl">本月有效单</div><div style="display:flex;align-items:baseline;gap:6px;margin:4px 0 10px"><span class="big">'+cnt(mp.done)+'</span><span class="note">/ '+int(mp.target)+' · '+(mp.done/mp.target*100).toFixed(1)+'%</span></div>'+hbar(mp.done/mp.target*100,'#141A16',10)+
+  '<div style="display:flex;justify-content:space-between;font-size:12.5px;margin:16px 0 6px"><span>本周</span><b class="num">'+wp.done+' / '+wp.target+'</b></div>'+hbar(wp.done/wp.target*100,'#8EE6A0',10)+
+  '<div class="tiles t2" style="margin-top:16px"><div class="tile"><div class="l">本月实付</div><div class="v num" style="font-size:15px">'+money(m.mt.gmv+m.tb.gmv)+'</div></div><div class="tile"><div class="l">本月到手</div><div class="v num" style="font-size:15px">'+money(m.mt.income+m.tb.income)+'</div></div></div>');
+ var l=L();
+ g+= l? card('c3','💼','财务快照','账本截至 '+md(l.as_of),
+  '<div class="lbl">欠供应商</div><div class="big num" style="color:#B5543C;margin:4px 0 2px">'+cnt(l.payables.total,'money')+'</div><div class="note">'+l.payables.suppliers.length+' 家 · 最久已欠 '+Math.max.apply(null,l.payables.suppliers.map(function(s){return s.days}))+' 天</div>'+
+  '<div class="row" style="margin-top:4px;padding:8px 0"><div class="grow1"><div class="lbl">待报销</div><div class="mid num">'+money(l.reimburse.total)+'</div></div><div class="note" style="text-align:right">'+l.reimburse.people.map(function(p){return esc(p.name)+' '+money(p.amount)}).join('<br>')+'</div></div>'+
+  '<div class="tiles t3" style="margin-top:2px;gap:6px">'+[['收入',l.month.income],['支出',l.month.expense],['利润',l.month.profit]].map(function(x,i){return '<div class="tile" style="padding:8px 9px"><div class="l">'+(i?x[0]:l.month.month.slice(5)+'月'+x[0])+'</div><div class="v num" style="font-size:13.5px'+(i===2?';color:'+(x[1]<0?'#B5543C':'#2E8B57'):'')+'">'+money(x[1],0)+'</div></div>'}).join('')+'</div>'+
+  (l.missing_fixed.length?'<div class="note" style="margin-top:6px">'+l.missing_fixed.map(function(x){return x.label}).join('、')+'还没入账</div>':''))
+  : card('c3','💼','财务快照','未导入','<div class="ph"><div class="nc">账本未导入</div></div>');
+ var soc=function(k,name){var d=D.social[k];return '<div class="row" style="padding:9px 0">'+PI(k)+'<div class="grow1"><b style="font-size:13px">'+name+'</b><div class="note">'+(d?esc(d.updated||''):'未接入')+'</div></div><div style="text-align:right"><div class="lbl">粉丝</div><div style="font-weight:780">'+(d?cnt(d.followers):'<span class="nc">未接入</span>')+'</div></div><div style="text-align:right;min-width:52px"><div class="lbl">净增</div><div style="font-weight:780">'+(d?cnt(d.net):'<span class="nc">未接入</span>')+'</div></div></div>'};
+ g+=card('c3','📱','社媒','粉丝 · 净增',soc('xiaohongshu','小红书')+soc('douyin','抖音')+
+  '<div class="ph" style="margin-top:10px;padding:10px 12px"><div class="lbl">粉丝 / 净增趋势 · 最新内容</div><div class="note">接入后显示，现在不放任何数字</div></div>');
+ var R=D.reputation,rr=function(k,name,o){var has=o&&isNum(o.shop_score),dl=has&&isNum(o.shop_score_prev)?o.shop_score-o.shop_score_prev:null;
+  return '<div class="row" style="padding:9px 0">'+PI(k)+'<div class="grow1"><div style="font-size:13px;font-weight:700">'+name+'</div><div class="note">'+(o?(isNum(o.rating)?'评分 '+o.rating.toFixed(1):'评分 未读到'):'未接入')+(dl!=null?' · <span style="color:'+(dl>0?'#2E8B57':dl<0?'#D9573A':'#7A847B')+'">'+(dl>0?'↑'+dl:dl<0?'↓'+(-dl):'持平')+'</span>':'')+'</div></div><div class="big" style="font-size:26px">'+(has?cnt(o.shop_score):o?'<span class="miss" style="font-size:13px">未读到</span>':'<span class="nc" style="font-size:13px">未接入</span>')+'</div></div>'};
+ g+=card('c3','⭐','平台评分','店铺分',rr('mt','美团外卖',R.meituan)+rr('tb','淘宝闪购',R.taobao)+rr('dp','大众点评',R.dianping));
+ var top=D.dishes.items[0],pf=(D.dishes.profit&&D.dishes.profit.items||[]).filter(function(x){return x.name===top.name})[0],cum=D.dishes.cumulative.items.filter(function(x){return x.name===top.name})[0];
+ g+=card('c3','🏆','今日爆款','出餐第 1',
+  '<div style="font-size:14.5px;font-weight:800;line-height:1.35">'+esc(top.name)+'</div><div style="display:flex;align-items:baseline;gap:8px;margin:6px 0 4px"><span class="big">'+cnt(top.total)+'</span><span class="note">份</span><span class="split" style="margin-left:6px">'+PI('mt',1)+top.mt+' '+PI('tb',1)+top.tb+'</span></div>'+
+  '<div class="tiles t2" style="margin-top:10px"><div class="tile"><div class="l">单份利润</div><div class="v num" style="font-size:15px">'+(pf&&isNum(pf.profit)?money(pf.profit):'<span class="miss" style="font-size:12px">成本待确认</span>')+'</div></div><div class="tile"><div class="l">累计</div><div class="v num" style="font-size:15px">'+(cum?cum.n+' 份':'<span class="miss" style="font-size:12px">未读到</span>')+'</div></div></div><div class="note" style="margin-top:8px">赏金单 '+top.bounty+' 份 · 单份成本 '+(isNum(top.unit_cost)?money(top.unit_cost):'待确认')+'</div>');
+ var pm=D.promo,b=D.bounty,bal=function(k,name,o){var low=isNum(o.balance)&&o.balance<10;return '<div class="row" style="padding:8px 0">'+PI(k)+'<div class="grow1"><div style="font-size:13px;font-weight:700">'+name+'</div>'+(low?'<span class="pill r" style="font-size:10.5px;padding:1px 7px">余额不足</span>':'<div class="note">'+esc(o.status)+'</div>')+'</div><div class="mid num" style="color:'+(low?'#B5543C':'#141A16')+'">'+show(o.balance,'money')+'</div></div>'};
+ g+=card('c3','📣','投流 · 赏金','今日',bal('mt','营销魔方余额',pm.mt)+bal('tb','推广魔方余额',pm.tb)+
+  '<div style="border-top:1px solid #F1F3EE;padding-top:10px;margin-top:2px"><div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">赏金联盟 '+b.orders+' 单</span><b class="num" style="font-size:18px">'+cnt(b.total,'money')+'</b></div><div style="margin:6px 0 4px">'+hbar(b.share_of_mt_income,'#B9A3FF',6)+'</div><div class="note">占美团到手 '+b.share_of_mt_income.toFixed(1)+'% · 扣后每单 <b style="color:#B5543C">'+money(b.per_order)+'</b></div></div>');
+ var al=(D.alerts||[]).slice();if(l&&l.missing_fixed.length)al.push('账本：本月'+l.missing_fixed.map(function(x){return x.label+'（预算 '+money(x.budget,0)+'）'}).join('、')+'还没入账');
+ g+=card('c12','🔔','待办提醒',al.length+' 条','<div class="alerts2">'+al.map(function(a){return '<div class="alert"><b class="d"></b><span>'+esc(a)+'</span></div>'}).join('')+'</div>');
+ return g+'</div>';
+}
+/* ================= 经营 ================= */
 function vBiz(){
- var p=P(), n=D.days.length-1, mt=S.plat!=='tb', tb=S.plat!=='mt';
- var split=function(k,fmt){return '<div class="split">'+(mt?'<span>'+BM+fmtv(p.mt[k],fmt)+'</span>':'')+(tb?'<span>'+BT+fmtv(p.tb[k],fmt)+'</span>':'')+'</div>'};
- var en=pick(p.expense_note);
- var kp=[
-  ['单量','#E6FB4D',cnt(sumP('orders')),split('orders'),D.chip_notes.orders,daySeries(function(d){return (mt?d.mo:0)+(tb?d.to:0)})],
-  ['实付 / 营业额','#FF875F',cnt(sumP('gmv'),'money'),split('gmv','money'),tb?D.chip_notes.gmv_tb:D.chip_notes.gmv_mt,daySeries(function(d){return (mt?d.mg:0)+(tb?(d.tg||0):0)})],
-  ['到手','#9DFB8D',cnt(sumP('income'),'money'),split('income','money'),D.chip_notes.income,daySeries(function(d){return (mt?d.mi:0)+(tb?d.ti:0)})],
-  ['支出','#C4D23A',cnt(expense(),'money'),split('expense','money'),'商家优惠+佣金+商家配送补贴+配送费；'+en,daySeries(function(d){return d.exp?(S.plat==='all'?d.exp.all:S.plat==='mt'?d.exp.mt:d.exp.tb):null})],
-  ['赏金（单列）','#BDA6FF',cnt(bounty(),'money','未汇总'),'<div class="split">'+(S.plat==='tb'?'淘宝无赏金':BM+'美团赏金联盟')+'</div>',S.period==='today'?'占美团到手 '+D.bounty.share_of_mt_income.toFixed(1)+'%，扣一次':S.period==='week'?p.after.note:'本月赏金未逐日汇总',null],
-  ['扣赏金和投流后','#111613',cnt(after(),'money','未汇总'),'<div class="split">投流 '+(isNum(ads())?money(ads()):'<span class="miss">未汇总</span>')+'</div>',p.after?p.after.note:'本月赏金、投流未逐日汇总',null]
- ];
- var k='<div class="kpis">'+kp.map(function(x){return '<section class="card kpi" style="--acc:'+x[1]+'"><div class="k">'+x[0]+'<span class="tag">'+p.label+'</span></div><div class="v">'+x[2]+'</div>'+x[3]+'<div class="n">'+esc(x[4])+'</div>'+(x[5]?spark(x[5],x[1]==='#111613'?'#111613':x[1],n):'')+'</section>'}).join('')+'</div>';
+ var p=P(),n=D.days.length-1,mt=S.plat!=='tb',tb=S.plat!=='mt';
+ var split=function(k,fmt){return '<div class="split">'+(mt?'<span>'+PI('mt',1)+fmtv(p.mt[k],fmt)+'</span>':'')+(tb?'<span>'+PI('tb',1)+fmtv(p.tb[k],fmt)+'</span>':'')+'</div>'};
+ var exp=S.plat==='all'?p.expense_all:S.plat==='mt'?p.mt.expense:p.tb.expense,bty=S.plat==='tb'?0:p.bounty;
+ var ads=S.plat==='mt'?p.ads.mt:S.plat==='tb'?p.ads.tb:(isNum(p.ads.mt)&&isNum(p.ads.tb)?p.ads.mt+p.ads.tb:null),aft=p.after?p.after[S.plat]:null,en=pick(p.expense_note);
+ var kp=[['单量','#C4DD3A',cnt(sumP('orders')),split('orders'),D.chip_notes.orders,D.days.map(function(d){return (mt?d.mo:0)+(tb?d.to:0)})],
+  ['实付 / 营业额','#FF8A65',cnt(sumP('gmv'),'money'),split('gmv','money'),tb?D.chip_notes.gmv_tb:D.chip_notes.gmv_mt,D.days.map(function(d){return (mt?d.mg:0)+(tb?(d.tg||0):0)})],
+  ['到手','#5FCB7A',cnt(sumP('income'),'money'),split('income','money'),D.chip_notes.income,D.days.map(function(d){return (mt?d.mi:0)+(tb?d.ti:0)})],
+  ['支出','#6FB4F2',cnt(exp,'money'),split('expense','money'),'优惠+佣金+配送补贴+配送费',D.days.map(function(d){return d.exp?(S.plat==='all'?d.exp.all:S.plat==='mt'?d.exp.mt:d.exp.tb):null})],
+  ['赏金（单列）','#A88CFF',cnt(bty,'money','未汇总'),'<div class="split">'+(S.plat==='tb'?'淘宝无赏金':PI('mt',1)+'赏金联盟')+'</div>',S.period==='today'?'占美团到手 '+D.bounty.share_of_mt_income.toFixed(1)+'%，扣一次':p.after?p.after.note:'本月赏金未逐日汇总',null],
+  ['扣赏金和投流后','#141A16',cnt(aft,'money','未汇总'),'<div class="split">投流 '+(isNum(ads)?money(ads):'<span class="miss">未汇总</span>')+'</div>',p.after?p.after.note:'本月赏金、投流未逐日汇总',null]];
+ var k='<div class="kpis">'+kp.map(function(x){return '<section class="card kpi" style="--acc:'+x[1]+'"><div class="k"><span>'+x[0]+'</span><span class="dot"></span></div><div class="v">'+x[2]+'</div>'+x[3]+'<div class="n">'+esc(x[4])+'</div>'+(x[5]?spark(x[5],x[1],n):'')+'</section>'}).join('')+'</div>';
  var g='<div class="grid">';
- g+=card('c8 trend','📈','趋势',S.plat==='all'?'美团 + 淘宝闪购':S.plat==='mt'?'美团':'淘宝闪购',
-   '<div class="ch" style="margin-top:-4px"><span class="note">'+esc(D.trend_note)+'</span><div class="seg" id="seg-metric"><button data-m="orders" class="'+(S.metric==='orders'?'on':'')+'">单量</button><button data-m="income" class="'+(S.metric==='income'?'on':'')+'">到手</button></div></div>'+trendSVG()+'<div class="tip" id="tip"></div>');
- var pr=p.progress, pp=pr.done/pr.target*100;
- g+=card('c4','🎯','当标','全店目标 · '+platName()+'贡献','<div class="rings">'+ring(sumP('orders'),p.target_orders,'#C4D23A',p.label+'单量',int(sumP('orders'))+' / '+int(p.target_orders))+ring(sumP('gmv'),p.target_sales,'#FF875F',p.label+'销售额',money(sumP('gmv'))+' / ¥'+int(p.target_sales))+'</div>'+
-   '<div style="display:flex;justify-content:space-between;font-size:12.5px;margin:6px 0 6px"><span>'+(S.period==='today'?'当标率（保本线 41/天）':S.period==='week'?'本周应进度（41×天）':'本月应进度（41×天）')+'</span><b class="num">'+pr.done+' / '+pr.target+'（'+pp.toFixed(1)+'%）</b></div>'+hbar(pp,'#2E8B57')+
-   '<div class="note" style="margin-top:8px">全店'+p.label+' '+int(p.mt.orders+p.tb.orders)+' 单 · '+money(p.mt.gmv+p.tb.gmv)+'</div>');
- g+=card('c4 fun','🔻','今日漏斗',platName(),funnel());
+ g+=card('c8','📈','趋势',platName(),'<div class="ch" style="margin-top:-6px"><span class="note">'+esc(D.trend_note)+'</span><div class="seg"><button data-m="orders" class="'+(S.metric==='orders'?'on':'')+'">单量</button><button data-m="income" class="'+(S.metric==='income'?'on':'')+'">到手</button></div></div><div class="trend">'+trendSVG()+'</div><div class="split" id="tip" style="border-top:1px solid var(--line);padding-top:10px;margin-top:4px"></div>');
+ var pr=p.progress,pp=pr.done/pr.target*100;
+ g+=card('c4','🎯','当标','全店目标 · '+platName(),'<div style="display:flex;justify-content:space-around">'+ring(sumP('orders'),p.target_orders,'#C4DD3A',150,p.label+'单量',int(sumP('orders'))+' / '+int(p.target_orders))+ring(sumP('gmv'),p.target_sales,'#FF8A65',150,p.label+'销售额',money(sumP('gmv'),0)+' / '+money(p.target_sales,0))+'</div>'+
+  '<div style="display:flex;justify-content:space-between;font-size:12.5px;margin:10px 0 6px"><span>'+(S.period==='today'?'当标率（保本线 41/天）':'应进度（41×天）')+'</span><b class="num">'+pr.done+' / '+pr.target+'（'+pp.toFixed(1)+'%）</b></div>'+hbar(pp,'#2E8B57',10));
+ g+=card('c4','🔻','今日漏斗',platName(),funnel());
  g+=card('c4','⚖️','平台对比',p.label,platTable());
  g+=card('c4','💹','毛利与称呼','今日',marginBox());
- g+=card('c5 fly','♻️','飞轮','流量 × 转化',flywheel());
- g+=card('c7','📝','口径说明',p.label,'<p class="note" style="margin:0 0 8px">'+esc(p.note)+'</p><p class="note" style="margin:0 0 8px">'+esc(D.period_tail)+'</p><p class="note" style="margin:0">支出：'+esc(en)+'</p>');
+ g+=card('c12','📝','口径说明',p.label,'<p class="note" style="margin:0 0 8px">'+esc(p.note)+'</p><p class="note" style="margin:0 0 8px">'+esc(D.period_tail)+'</p><p class="note" style="margin:0">支出：'+esc(en)+'</p>');
  return k+g+'</div>';
 }
-function platName(){return S.plat==='all'?'合计':S.plat==='mt'?'美团':'淘宝闪购'}
 function trendSVG(){
- var mt=S.plat!=='tb', tb=S.plat!=='mt', M=S.metric, days=D.days, N=days.length;
- var va=function(d){return M==='orders'?d.mo:d.mi}, vb=function(d){return M==='orders'?d.to:d.ti};
+ var mt=S.plat!=='tb',tb=S.plat!=='mt',M=S.metric,days=D.days,N=days.length;
+ var va=function(d){return M==='orders'?d.mo:d.mi},vb=function(d){return M==='orders'?d.to:d.ti};
  var tot=days.map(function(d){return (mt?va(d):0)+(tb?vb(d):0)});
- var mx=Math.max.apply(null,tot.concat([M==='orders'?41:100])); var ceil=M==='orders'?Math.ceil(mx*1.12/10)*10:Math.ceil(mx*1.12/500)*500;
- var W=760,H=300,L=44,R=12,T=16,B=36, cw=(W-L-R)/N, y=function(v){return T+(H-T-B)*(1-v/ceil)};
- var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="每日趋势">';
- for(var i=0;i<=5;i++){var v=ceil*i/5;s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#E7ECE2"/><text x="'+(L-6)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="11" fill="#8A938A">'+(M==='orders'?Math.round(v):int(v))+'</text>'}
- if(M==='orders') s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(41)+'" y2="'+y(41)+'" stroke="#2E8B57" stroke-dasharray="5 6"/><text x="'+(W-R)+'" y="'+(y(41)-6)+'" text-anchor="end" font-size="11" fill="#2E8B57">保本线 41</text>';
- s+='<g class="bars">';
- var both=mt&&tb, bw=Math.min(18,(cw-8)/(both?2:1));
- days.forEach(function(d,i){var cx=L+cw*i+cw/2, hi=(S.hover==null?N-1:S.hover)===i;
-  var a=va(d), b=vb(d);
-  if(mt){var x0=both?cx-bw-1:cx-bw/2; s+='<rect x="'+x0+'" y="'+y(a)+'" width="'+bw+'" height="'+(y(0)-y(a))+'" rx="4" fill="#FFC300" opacity="'+(hi?1:.75)+'" style="transition-delay:'+(i*35)+'ms"/>'}
-  if(tb){var x1=both?cx+1:cx-bw/2; s+='<rect x="'+x1+'" y="'+y(b)+'" width="'+bw+'" height="'+(y(0)-y(b))+'" rx="4" fill="#FF6A2B" opacity="'+(hi?1:.75)+'" style="transition-delay:'+(i*35)+'ms"/>'}
- });
- s+='</g><polyline class="line" fill="none" stroke="#111613" stroke-width="2.5" stroke-linejoin="round" points="'+tot.map(function(v,i){return (L+cw*i+cw/2)+','+y(v)}).join(' ')+'"/>';
- days.forEach(function(d,i){var cx=L+cw*i+cw/2, hi=(S.hover==null?N-1:S.hover)===i;
-  s+='<circle cx="'+cx+'" cy="'+y(tot[i])+'" r="'+(hi?5.5:3)+'" fill="#111613"/><text x="'+cx+'" y="'+(H-14)+'" text-anchor="middle" font-size="11" fill="'+(hi?'#111613':'#6E796C')+'" font-weight="'+(hi?700:400)+'">'+d.date+'</text>'+
-  '<rect class="hit" data-i="'+i+'" x="'+(L+cw*i)+'" y="'+T+'" width="'+cw+'" height="'+(H-T-B+20)+'" fill="transparent" style="cursor:pointer"/>'});
+ var mx=Math.max.apply(null,tot.concat([M==='orders'?41:100])),ceil=M==='orders'?Math.ceil(mx*1.12/10)*10:Math.ceil(mx*1.12/500)*500;
+ var W=760,H=290,Lp=46,R=12,T=14,B=34,cw=(W-Lp-R)/N,y=function(v){return T+(H-T-B)*(1-v/ceil)},hov=S.hover==null?N-1:S.hover;
+ var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="display:block">';
+ for(var i=0;i<=5;i++){var v=ceil*i/5;s+='<line x1="'+Lp+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#EEF1E8"/><text x="'+(Lp-6)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="11" fill="#9AA39A">'+int(v)+'</text>'}
+ if(M==='orders')s+='<line x1="'+Lp+'" x2="'+(W-R)+'" y1="'+y(41)+'" y2="'+y(41)+'" stroke="#2E8B57" stroke-dasharray="5 6"/><text x="'+(W-R)+'" y="'+(y(41)-6)+'" text-anchor="end" font-size="11" fill="#2E8B57">保本线 41</text>';
+ var both=mt&&tb,bw=Math.min(18,(cw-8)/(both?2:1));
+ days.forEach(function(d,i){var cx=Lp+cw*i+cw/2,hi=hov===i,a=va(d),b=vb(d);
+  if(mt)s+='<rect class="grow" x="'+(both?cx-bw-1:cx-bw/2)+'" y="'+y(a)+'" width="'+bw+'" height="'+(y(0)-y(a))+'" rx="4" fill="#FFC300" opacity="'+(hi?1:.7)+'" style="transition-delay:'+(i*35)+'ms"/>';
+  if(tb)s+='<rect class="grow" x="'+(both?cx+1:cx-bw/2)+'" y="'+y(b)+'" width="'+bw+'" height="'+(y(0)-y(b))+'" rx="4" fill="#FF6A2B" opacity="'+(hi?1:.7)+'" style="transition-delay:'+(i*35)+'ms"/>'});
+ s+='<polyline class="draw" fill="none" stroke="#141A16" stroke-width="2.4" stroke-linejoin="round" points="'+tot.map(function(v,i){return (Lp+cw*i+cw/2)+','+y(v)}).join(' ')+'"/>';
+ days.forEach(function(d,i){var cx=Lp+cw*i+cw/2,hi=hov===i;s+='<circle cx="'+cx+'" cy="'+y(tot[i])+'" r="'+(hi?5.5:3)+'" fill="#141A16"/><text x="'+cx+'" y="'+(H-12)+'" text-anchor="middle" font-size="11" fill="'+(hi?'#141A16':'#7A847B')+'" font-weight="'+(hi?750:400)+'">'+d.date+'</text><rect class="hit" data-i="'+i+'" x="'+(Lp+cw*i)+'" y="'+T+'" width="'+cw+'" height="'+(H-T-B+20)+'" fill="transparent" style="cursor:pointer"/>'});
  return s+'</svg>';
 }
-function tipHTML(){var i=S.hover==null?D.days.length-1:S.hover, d=D.days[i];
- return '<b>'+d.date+'</b><span>'+BM+d.mo+' 单 · 实付 '+money(d.mg)+' · 到手 '+money(d.mi)+'</span><span>'+BT+d.to+' 单 · 实付 '+(d.tg==null?'<span class="miss">未记</span>':money(d.tg))+' · 到手 '+money(d.ti)+'</span>'+(d.exp?'<span>支出 '+money(d.exp.all!=null?d.exp.all:d.exp.mt)+(d.exp.all==null?'（仅美团）':'')+'</span>':'<span class="note">支出未逐单汇总</span>')}
-function funnel(){var f=S.plat==='all'?D.funnel.all:S.plat==='mt'?D.funnel.mt:D.funnel.tb, mx=f.exposure||1;
- var st=[['曝光',f.exposure,'#153A2A'],['进店',f.visit,'#286548'],['下单',f.order,'#4E9A6A']];
- var h=st.map(function(x,i){return '<div class="st"><div class="lab"><span>'+x[0]+'</span><b class="num">'+cnt(x[1])+'</b></div>'+hbar(isNum(x[1])?Math.max(4,x[1]/mx*100):0,x[2])+'</div>'}).join('');
+function tipHTML(){var i=S.hover==null?D.days.length-1:S.hover,d=D.days[i];
+ return '<b>'+d.date+'</b><span>'+PI('mt',1)+d.mo+' 单 · 实付 '+money(d.mg)+' · 到手 '+money(d.mi)+'</span><span>'+PI('tb',1)+d.to+' 单 · 实付 '+(d.tg==null?'<span class="miss">未记</span>':money(d.tg))+' · 到手 '+money(d.ti)+'</span>'+(d.exp?'<span>支出 '+money(d.exp.all!=null?d.exp.all:d.exp.mt)+(d.exp.all==null?'（仅美团）':'')+'</span>':'<span class="note">支出未逐单汇总</span>')}
+function funnel(){var f=S.plat==='all'?D.funnel.all:S.plat==='mt'?D.funnel.mt:D.funnel.tb,mx=f.exposure||1;
+ var st=[['曝光',f.exposure,'#1F4D36'],['进店',f.visit,'#3C8058'],['下单',f.order,'#7CC08E']];
+ var h=st.map(function(x){return '<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>'+x[0]+'</span><b class="num">'+cnt(x[1])+'</b></div>'+hbar(isNum(x[1])?Math.max(4,x[1]/mx*100):0,x[2],22)+'</div>'}).join('');
  var r=function(o,nm){return '<tr><td>'+nm+'</td><td class="num">'+o.visit_rate.toFixed(2)+'%</td><td class="num">'+o.peer_visit_rate+'%</td><td class="num">'+o.order_rate.toFixed(2)+'%</td><td class="num">'+o.peer_order_rate+'%</td></tr>'};
- return h+'<table class="t" style="margin-top:8px;font-size:11.5px"><tr><th>转化</th><th>进店</th><th>同行</th><th>下单</th><th>同行</th></tr>'+(S.plat!=='tb'?r(D.funnel.mt,BM+'美团'):'')+(S.plat!=='mt'?r(D.funnel.tb,BT+'淘宝'):'')+'</table><p class="note" style="margin:8px 0 0">'+esc(D.funnel.note)+'</p>'}
-function platTable(){var p=P(), rows=[['有效单量','orders','int'],['实付 / 营业额','gmv','money'],['到手','income','money'],['支出','expense','money']];
- var h='<table class="t"><tr><th>项目</th><th>'+BM+'美团</th><th>'+BT+'淘宝</th><th>合计</th></tr>';
+ return h+'<table class="t" style="margin-top:8px"><tr><th>转化</th><th>进店</th><th>同行</th><th>下单</th><th>同行</th></tr>'+(S.plat!=='tb'?r(D.funnel.mt,PI('mt',1)+'美团'):'')+(S.plat!=='mt'?r(D.funnel.tb,PI('tb',1)+'淘宝'):'')+'</table><p class="note" style="margin:8px 0 0">'+esc(D.funnel.note)+'</p>'}
+function platTable(){var p=P(),rows=[['有效单量','orders','int'],['实付 / 营业额','gmv','money'],['到手','income','money'],['支出','expense','money']];
+ var h='<table class="t"><tr><th>项目</th><th>'+PI('mt',1)+'美团</th><th>'+PI('tb',1)+'淘宝</th><th>合计</th></tr>';
  rows.forEach(function(r){var a=p.mt[r[1]],b=p.tb[r[1]],c=r[1]==='expense'?p.expense_all:a+b;h+='<tr><td>'+r[0]+'</td><td class="num">'+fmtv(a,r[2])+'</td><td class="num">'+fmtv(b,r[2])+'</td><td class="num">'+fmtv(c,r[2])+'</td></tr>'});
- var ad=p.ads; h+='<tr><td>赏金（单列）</td><td class="num">'+(isNum(p.bounty)?money(p.bounty):'<span class="miss">未汇总</span>')+'</td><td>—</td><td class="num">'+(isNum(p.bounty)?money(p.bounty):'—')+'</td></tr>';
- h+='<tr><td>投流（单列）</td><td class="num">'+(isNum(ad.mt)?money(ad.mt):'<span class="miss">未汇总</span>')+'</td><td class="num">'+(isNum(ad.tb)?money(ad.tb):'<span class="miss">未汇总</span>')+'</td><td class="num">'+(isNum(ad.mt)&&isNum(ad.tb)?money(ad.mt+ad.tb):'—')+'</td></tr>';
- var af=p.after; h+='<tr class="hl"><td>扣赏金和投流后</td><td class="num">'+(af?money(af.mt):'—')+'</td><td class="num">'+(af?money(af.tb):'—')+'</td><td class="num">'+(af?money(af.all):'<span class="miss">未汇总</span>')+'</td></tr></table>';
- var pm=p.mt.orders+p.tb.orders; h+='<div style="margin-top:10px;font-size:12px">单量占比</div><div style="display:flex;height:12px;border-radius:999px;overflow:hidden;margin-top:5px"><i style="width:'+(p.mt.orders/pm*100)+'%;background:#FFC300"></i><i style="width:'+(p.tb.orders/pm*100)+'%;background:#FF6A2B"></i></div><div class="note" style="margin-top:4px">美团 '+(p.mt.orders/pm*100).toFixed(1)+'% · 淘宝 '+(p.tb.orders/pm*100).toFixed(1)+'%</div>';
+ var ad=p.ads;h+='<tr><td>赏金（单列）</td><td class="num">'+show(p.bounty,'money','未汇总')+'</td><td>—</td><td class="num">'+show(p.bounty,'money','—')+'</td></tr>';
+ h+='<tr><td>投流（单列）</td><td class="num">'+show(ad.mt,'money','未汇总')+'</td><td class="num">'+show(ad.tb,'money','未汇总')+'</td><td class="num">'+(isNum(ad.mt)&&isNum(ad.tb)?money(ad.mt+ad.tb):'—')+'</td></tr>';
+ var af=p.after;h+='<tr class="hl"><td>扣赏金和投流后</td><td class="num">'+(af?money(af.mt):'—')+'</td><td class="num">'+(af?money(af.tb):'—')+'</td><td class="num">'+(af?money(af.all):'<span class="miss">未汇总</span>')+'</td></tr></table>';
+ var pm=p.mt.orders+p.tb.orders;h+='<div style="margin-top:12px;font-size:12px">单量占比</div><div class="stack" style="margin-top:6px"><i style="width:'+(p.mt.orders/pm*100)+'%;background:#FFC300"></i><i style="width:'+(p.tb.orders/pm*100)+'%;background:#FF6A2B"></i></div><div class="note" style="margin-top:4px">美团 '+(p.mt.orders/pm*100).toFixed(1)+'% · 淘宝 '+(p.tb.orders/pm*100).toFixed(1)+'%</div>';
  return h}
 function marginBox(){var m=D.margin,g=D.gender;
- return '<div style="display:flex;gap:16px;align-items:center"><div style="flex:1"><div class="note">精确毛利（'+m.exact_orders+'/'+m.total_orders+' 单，覆盖 '+m.coverage+'%）</div><div style="font-size:26px;font-weight:800" class="num">'+cnt(m.gross,'money')+'</div><div class="note">毛利率 '+m.rate+'% · 扣赏金后 '+money(m.after_bounty)+'</div></div></div>'+
- '<div style="margin:10px 0 4px;font-size:12px">覆盖率</div>'+hbar(m.coverage,'#9DFB8D')+'<p class="note" style="margin:6px 0 10px">'+esc(m.note)+'；到手 '+money(m.income)+'、成本 '+money(m.cost)+'（含包装 ¥3.07）。</p>'+
- '<div style="font-size:12px;margin-bottom:5px">'+BM+'美团称呼：先生 '+g.mt.male+' · 女士 '+g.mt.female+'</div><div style="display:flex;height:12px;border-radius:999px;overflow:hidden"><i style="width:'+(g.mt.male/(g.mt.male+g.mt.female)*100)+'%;background:#7FA6FF"></i><i style="width:'+(g.mt.female/(g.mt.male+g.mt.female)*100)+'%;background:#FF9EB5"></i></div><div class="note" style="margin-top:6px">'+BT+'淘宝：'+esc(g.tb.note)+'</div>'}
-function flywheel(){var nodes=[[104,62,'曝光'],[288,62,'进店'],[363,137,'下单'],[251,208,'复购与好评'],[90,178,'店铺分 / 排名']];
- return '<svg viewBox="0 0 440 250" width="100%" role="img" aria-label="经营飞轮"><defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#111613" stroke-width="1.5"/></marker></defs>'+
- '<ellipse id="orb" cx="220" cy="128" rx="151" ry="80" fill="none" stroke="#D7DED0" stroke-width="2"/>'+
- '<path class="path" d="M104 70 C180 8 334 40 361 105 M351 167 C300 231 145 232 91 173 M69 128 C65 110 70 91 82 80" fill="none" stroke="#111613" stroke-width="2" marker-end="url(#ar)"/>'+
- '<circle r="6" fill="#FF875F"><animateMotion dur="6s" repeatCount="indefinite" path="M371 128 A151 80 0 1 1 69 128 A151 80 0 1 1 371 128"/></circle>'+
- nodes.map(function(n){return '<g><rect x="'+(n[0]-54)+'" y="'+(n[1]-18)+'" width="108" height="36" rx="18" fill="#111613"/><text x="'+n[0]+'" y="'+(n[1]+5)+'" font-size="12" text-anchor="middle" fill="#FFF1E7">'+n[2]+'</text></g>'}).join('')+
- '<text x="214" y="130" text-anchor="middle" font-weight="800" font-size="22" fill="#111613">流量 × 转化</text><text x="214" y="150" text-anchor="middle" font-size="11" fill="#6E796C">回到曝光，持续循环</text></svg><div class="note">'+esc(D.flywheel_note)+'</div>'}
+ return '<div class="lbl">精确毛利（'+m.exact_orders+'/'+m.total_orders+' 单，覆盖 '+m.coverage+'%）</div><div class="big num" style="margin:6px 0">'+cnt(m.gross,'money')+'</div><div class="note">毛利率 '+m.rate+'% · 扣赏金后 '+money(m.after_bounty)+'</div>'+
+ '<div style="margin:12px 0 5px;font-size:12px">覆盖率</div>'+hbar(m.coverage,'#8EE6A0')+'<p class="note" style="margin:8px 0 12px">'+esc(m.note)+'；到手 '+money(m.income)+'、成本 '+money(m.cost)+'（含包装 ¥3.07）。</p>'+
+ '<div style="font-size:12px;margin-bottom:6px">'+PI('mt',1)+'美团称呼：先生 '+g.mt.male+' · 女士 '+g.mt.female+'</div><div class="stack"><i style="width:'+(g.mt.male/(g.mt.male+g.mt.female)*100)+'%;background:#8CC8FF"></i><i style="width:'+(g.mt.female/(g.mt.male+g.mt.female)*100)+'%;background:#FFB0C2"></i></div><div class="note" style="margin-top:6px">'+PI('tb',1)+'淘宝：'+esc(g.tb.note)+'</div>'}
 
-/* ---------- tab: 投流与营销 ---------- */
-function vAds(){var pm=D.promo, b=D.bounty, g='<div class="grid">';
- var pc=function(o,nm,badge,extra){return '<div class="mtiles"><div class="mt"><div class="l">今日消费</div><div class="v num">'+cnt(o.spend,'money')+'</div></div><div class="mt"><div class="l">曝光提升</div><div class="v num">'+cnt(o.expo)+'</div></div><div class="mt"><div class="l">进店提升</div><div class="v num">'+cnt(o.visit)+'</div></div></div>'+
-  '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12.5px"><span>账户余额</span><b class="num" style="color:'+(o.balance<10?'#D9573A':'#111613')+'">'+money(o.balance)+(o.balance<10?' · 余额不足':'')+'</b></div>'+hbar(Math.min(100,o.balance/50*100),'#D9573A')+'<p class="note" style="margin:8px 0 0">'+esc(o.status)+'（页面 '+esc(o.when)+'）。'+extra+'</p>'};
- g+=card('c4','📣',BM+'美团 营销魔方','门店推广',pc(pm.mt,'美团','mt',esc(pm.mt.week.label)));
- g+=card('c4','📣',BT+'淘宝 推广魔方','店铺推广',pc(pm.tb,'淘宝','tb','昨天全天 ¥'+pm.tb.yesterday.spend+'、曝光提升 '+pm.tb.yesterday.expo+'、进店提升 '+pm.tb.yesterday.visit+'；'+esc(pm.tb_week.label)+'，曝光提升 '+int(pm.tb_week.expo)+'、进店提升 '+int(pm.tb_week.visit)+'（进店率 '+(pm.tb_week.visit/pm.tb_week.expo*100).toFixed(1)+'%）。'));
- var H=pm.history, mx=Math.max.apply(null,H.map(function(h){return Math.max(h.mt||0,h.tb||0)}).concat([1]));
- g+=card('c4','📊','每日投流','美团 / 淘宝',H.map(function(h){return '<div style="display:grid;grid-template-columns:42px 1fr 1fr;gap:8px;align-items:center;margin:6px 0;font-size:12px"><span>'+h.date+'</span><div>'+(isNum(h.mt)?hbar(Math.max(h.mt?3:0,h.mt/mx*100),'#FFC300'):'')+'<div class="note">'+(isNum(h.mt)?money(h.mt):'<span class="miss">未读到</span>')+'</div></div><div>'+(isNum(h.tb)?hbar(Math.max(h.tb?3:0,h.tb/mx*100),'#FF6A2B'):'')+'<div class="note">'+(isNum(h.tb)?money(h.tb):'<span class="miss">未读到</span>')+'</div></div></div>'}).join('')+'<p class="note" style="margin:6px 0 0">'+esc(pm.history_note||'投流单列，不进支出；赏金单不算投流成单。')+'</p>');
- var bt='<div class="mtiles" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-top:0"><div class="mt"><div class="l">今日赏金</div><div class="v num">'+cnt(b.total,'money')+'</div></div><div class="mt"><div class="l">赏金单</div><div class="v num">'+cnt(b.orders)+' 单</div></div><div class="mt"><div class="l">扣后每单</div><div class="v num" style="color:#D9573A">'+cnt(b.per_order,'money')+'</div></div><div class="mt"><div class="l">占美团到手</div><div class="v num">'+cnt(b.share_of_mt_income,'pct')+'</div></div></div>';
- bt+='<table class="t" style="margin-top:12px"><tr><th>活动</th><th>比例</th><th>名额</th><th>完成</th><th>剩余</th><th>订单额</th><th>赏金</th></tr>'+b.activities.map(function(a){return '<tr><td>'+esc(a.name)+'</td><td>'+a.ratio+'%</td><td>'+a.quota+'</td><td>'+a.done+'</td><td>'+a.left+'</td><td class="num">'+money(a.amount)+'</td><td class="num">'+money(a.spend)+'</td></tr>'}).join('')+'<tr><td>常规推广</td><td>10%</td><td>—</td><td>'+b.regular.orders+'</td><td>—</td><td>—</td><td class="num">'+money(b.regular.spend)+'</td></tr></table>';
- g+=card('c7','🎁',BM+'赏金联盟（霸王餐）','今日 · 单列',bt+'<p class="note" style="margin:10px 0 0">'+esc(b.note)+'</p>');
- g+=card('c5','🧾','赏金单逐单','按订单号对上',b.orders_detail.map(function(o){var left=o.income-o.bounty;return '<div style="display:grid;grid-template-columns:44px 1fr 70px;gap:8px;align-items:center;margin:8px 0;font-size:12.5px"><b>'+o.no+'</b><div><div>'+esc(o.dish)+' <span class="note">尾号 '+o.tail+'</span></div>'+hbar(o.bounty/o.income*100,'#BDA6FF')+'<div class="note">到手 '+money(o.income)+' − 赏金 '+money(o.bounty)+'</div></div><b class="num" style="text-align:right;color:'+(left<5?'#D9573A':'#111613')+'">'+money(left)+'</b></div>'}).join('')+'<div style="display:flex;justify-content:space-between;border-top:1px solid #E3E8DD;padding-top:8px;font-size:13px"><b>合计</b><b class="num">'+money(b.income_of_bounty_orders)+' → '+money(b.after)+'</b></div>');
- g+=card('c12','📝','投流说明','',' <p class="note" style="margin:0">'+esc(pm.note)+'</p>');
+/* ================= 营销 ================= */
+function vMkt(){var pm=D.promo,b=D.bounty,g='<div class="grid">';
+ var pc=function(o,extra){var low=isNum(o.balance)&&o.balance<10;return '<div class="tiles t3"><div class="tile"><div class="l">今日消费</div><div class="v num">'+cnt(o.spend,'money')+'</div></div><div class="tile"><div class="l">曝光提升</div><div class="v num">'+cnt(o.expo)+'</div></div><div class="tile"><div class="l">进店提升</div><div class="v num">'+cnt(o.visit)+'</div></div></div>'+
+  '<div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px;font-size:12.5px"><span>账户余额</span><b class="num" style="color:'+(low?'#B5543C':'#141A16')+'">'+show(o.balance,'money')+(low?' · 余额不足':'')+'</b></div>'+hbar(Math.min(100,(o.balance||0)/50*100),'#D9573A')+'<p class="note" style="margin:10px 0 0">'+esc(o.status)+'（页面 '+esc(o.when)+'）。'+extra+'</p>'};
+ g+=card('c4','',PI('mt')+' 美团 营销魔方','门店推广',pc(pm.mt,esc(pm.mt.week.label)));
+ g+=card('c4','',PI('tb')+' 淘宝 推广魔方','店铺推广',pc(pm.tb,'昨天全天 ¥'+pm.tb.yesterday.spend+'、曝光提升 '+pm.tb.yesterday.expo+'、进店提升 '+pm.tb.yesterday.visit+'；'+esc(pm.tb_week.label)+'，曝光提升 '+int(pm.tb_week.expo)+'、进店提升 '+int(pm.tb_week.visit)+'。'));
+ var H=pm.history,mx=Math.max.apply(null,H.map(function(h){return Math.max(h.mt||0,h.tb||0)}).concat([1]));
+ g+=card('c4','📊','每日投流','美团 / 淘宝',H.map(function(h){var cell=function(v,c){return '<div>'+(isNum(v)?hbar(Math.max(v?3:0,v/mx*100),c,6):'')+'<div class="note">'+show(v,'money')+'</div></div>'};return '<div style="display:grid;grid-template-columns:42px 1fr 1fr;gap:10px;align-items:center;margin:4px 0;font-size:12px"><span>'+h.date+'</span>'+cell(h.mt,'#FFC300')+cell(h.tb,'#FF6A2B')+'</div>'}).join('')+'<p class="note" style="margin:6px 0 0">'+esc(pm.history_note||'')+'</p>');
+ var bt='<div class="tiles t4"><div class="tile"><div class="l">今日赏金</div><div class="v num">'+cnt(b.total,'money')+'</div></div><div class="tile"><div class="l">赏金单</div><div class="v num">'+cnt(b.orders)+' 单</div></div><div class="tile"><div class="l">扣后每单</div><div class="v num" style="color:#B5543C">'+cnt(b.per_order,'money')+'</div></div><div class="tile"><div class="l">占美团到手</div><div class="v num">'+cnt(b.share_of_mt_income,'pct')+'</div></div></div>';
+ bt+='<div class="tw"><table class="t" style="margin-top:12px"><tr><th>活动</th><th>比例</th><th>名额</th><th>完成</th><th>剩余</th><th>订单额</th><th>赏金</th></tr>'+b.activities.map(function(a){return '<tr><td>'+esc(a.name)+'</td><td>'+a.ratio+'%</td><td>'+a.quota+'</td><td>'+a.done+'</td><td>'+a.left+'</td><td class="num">'+money(a.amount)+'</td><td class="num">'+money(a.spend)+'</td></tr>'}).join('')+'<tr><td>常规推广</td><td>10%</td><td>—</td><td>'+b.regular.orders+'</td><td>—</td><td>—</td><td class="num">'+money(b.regular.spend)+'</td></tr></table></div>';
+ g+=card('c7','🎁','赏金联盟（霸王餐）','今日 · 单列',bt+'<p class="note" style="margin:10px 0 0">'+esc(b.note)+'</p>');
+ g+=card('c5','🧾','赏金单逐单','按订单号对上',b.orders_detail.map(function(o){var left=o.income-o.bounty;return '<div style="display:grid;grid-template-columns:40px 1fr 66px;gap:10px;align-items:center;margin:9px 0;font-size:12.5px"><b>'+o.no+'</b><div><div>'+esc(o.dish)+' <span class="note">尾号 '+o.tail+'</span></div>'+hbar(o.bounty/o.income*100,'#B9A3FF',6)+'<div class="note">到手 '+money(o.income)+' − 赏金 '+money(o.bounty)+'</div></div><b class="num" style="text-align:right;color:'+(left<5?'#B5543C':'#141A16')+'">'+money(left)+'</b></div>'}).join('')+'<div style="display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:10px;font-size:13px"><b>合计</b><b class="num">'+money(b.income_of_bounty_orders)+' → '+money(b.after)+'</b></div>');
+ g+=card('c12','📝','投流说明','','<p class="note" style="margin:0">'+esc(pm.note)+'</p>');
+ return g+'</div>'}
+/* ================= 社媒·口碑 ================= */
+function vSocial(){var g='<div class="sec" style="margin-top:4px">社媒</div><div class="grid">';
+ var one=function(k,name,tiles,how){var d=D.social[k];
+  if(!d)return card('c6','',PI(k)+' '+name,'未接入','<div class="ph"><div class="tiles t4">'+tiles.map(function(t){return '<div><div class="lbl">'+t+'</div><div class="mid nc" style="margin-top:4px">未接入</div></div>'}).join('')+'</div><div style="height:84px;display:grid;place-items:center;margin-top:12px;border-top:1px dashed #D3DACC" class="note">粉丝 / 净增趋势 · 最新内容（接入后显示）</div><p class="note" style="margin:6px 0 0">接入方式：'+how+'</p></div>');
+  return card('c6','',PI(k)+' '+name,esc(d.updated||''),'<div class="tiles t4">'+[['followers','粉丝'],['net','净增'],['posts',tiles[2]],['engagement',tiles[3]]].map(function(x){return '<div class="tile"><div class="l">'+x[1]+'</div><div class="v num">'+cnt(d[x[0]])+'</div></div>'}).join('')+'</div>'+(d.note?'<p class="note">'+esc(d.note)+'</p>':''))};
+ g+=one('xiaohongshu','小红书',['粉丝','净增','笔记','互动（赞藏评）'],'data.json 的 social.xiaohongshu 写 {followers, net, posts, engagement, updated, note}；来自小红书专业号后台或每日抄数。');
+ g+=one('douyin','抖音',['粉丝','净增','作品','互动（赞评转）'],'data.json 的 social.douyin 写 {followers, net, posts, engagement, updated, note}；来自抖音创作者中心 / 抖音来客。');
+ g+='</div><div class="sec">口碑评分</div><div class="grid">';
+ var r=D.reputation,delta=function(a,b){if(!isNum(a)||!isNum(b))return '';var d=a-b;return '<span style="font-size:12px;color:'+(d>0?'#2E8B57':d<0?'#D9573A':'#7A847B')+';margin-left:6px">'+(d>0?'↑'+d:d<0?'↓'+(-d):'持平')+'</span>'};
+ var plat=function(k,nm,o){return card('c4','',PI(k)+' '+nm,'店铺分 & 评分','<div class="tiles t3"><div class="tile"><div class="l">店铺分</div><div class="v num">'+cnt(o.shop_score)+delta(o.shop_score,o.shop_score_prev)+'</div></div><div class="tile"><div class="l">评分</div><div class="v num">'+cnt(o.rating,'dec1')+'</div></div><div class="tile"><div class="l">评价数</div><div class="v num">'+cnt(o.reviews)+'</div></div></div>'+(isNum(o.shop_score)?'<div style="margin:14px 0 6px;font-size:12px">店铺分 / 100</div>'+hbar(o.shop_score,'#8EE6A0'):'')+'<p class="note" style="margin:8px 0 0">'+esc(o.note)+'</p>')};
+ g+=plat('mt','美团外卖',r.meituan)+plat('tb','淘宝闪购',r.taobao);
+ g+=r.dianping?card('c4','',PI('dp')+' 大众点评','','<div class="tiles t3"><div class="tile"><div class="l">星级</div><div class="v num">'+cnt(r.dianping.rating,'dec1')+'</div></div><div class="tile"><div class="l">评价数</div><div class="v num">'+cnt(r.dianping.reviews)+'</div></div><div class="tile"><div class="l">分项</div><div class="v">'+esc(r.dianping.sub||'—')+'</div></div></div>')
+  :card('c4','',PI('dp')+' 大众点评','未接入','<div class="ph"><div class="tiles t3"><div><div class="lbl">星级</div><div class="mid nc">未接入</div></div><div><div class="lbl">评价数</div><div class="mid nc">未接入</div></div><div><div class="lbl">分项</div><div class="mid nc">未接入</div></div></div><p class="note" style="margin:10px 0 0">接入后写 reputation.dianping：{rating, reviews, sub, updated, note}。</p></div>');
+ g+=card('c12','📝','说明','','<p class="note" style="margin:0">'+esc(r.note||'')+' 社媒没接入前一律显示「未接入」，不估算、不填 0。</p>');
  return g+'</div>'}
 
-/* ---------- tab: 社媒 ---------- */
-function vSocial(){var g='<div class="grid">';
- var one=function(name,icon,cfg,tiles,how){var d=D.social[cfg];
-  if(!d) return card('c6',icon,name,'未接入','<div class="ph"><div class="big">未接入</div><div class="note">还没有数据源，这里不显示任何数字。</div><div class="mtiles">'+tiles.map(function(t){return '<div class="mt"><div class="l">'+t+'</div><div class="v nc">未接入</div></div>'}).join('')+'</div><p class="note" style="margin:10px 0 0">接入方式：'+how+'</p></div>');
-  return card('c6',icon,name,d.updated||'',  '<div class="mtiles">'+tiles.map(function(t,i){var k=['followers','posts','engagement'][i];return '<div class="mt"><div class="l">'+t+'</div><div class="v num">'+cnt(d[k])+'</div></div>'}).join('')+'</div>'+(d.note?'<p class="note">'+esc(d.note)+'</p>':''))};
- g+=one('小红书','📕','xiaohongshu',['粉丝','笔记','互动（赞藏评）'],'在 data.json 的 social.xiaohongshu 写入 {followers, posts, engagement, updated, note}；数据来自小红书专业号后台或每日手动抄数。');
- g+=one('抖音','🎵','douyin',['粉丝','作品','互动（赞评转）'],'在 data.json 的 social.douyin 写入 {followers, posts, engagement, updated, note}；数据来自抖音创作者中心 / 抖音来客后台。');
- g+=card('c12','ℹ️','说明','','<p class="note" style="margin:0">社媒模块已按数据结构留好位置。没有接入前一律显示「未接入」，不估算、不填 0。</p>');
- return g+'</div>'}
-
-/* ---------- tab: 口碑评分 ---------- */
-function vRep(){var r=D.reputation, g='<div class="grid">';
- var delta=function(a,b){if(!isNum(a)||!isNum(b))return '';var d=a-b;return '<span style="font-size:12px;color:'+(d>0?'#2E8B57':d<0?'#D9573A':'#6E796C')+';margin-left:6px">'+(d>0?'↑':d<0?'↓':'持平 ')+(d?Math.abs(d):'')+'</span>'};
- var plat=function(nm,icon,o){return card('c4',icon,nm,'店铺分 & 评分','<div class="mtiles"><div class="mt"><div class="l">今日店铺分</div><div class="v num">'+cnt(o.shop_score)+delta(o.shop_score,o.shop_score_prev)+'</div></div><div class="mt"><div class="l">评分</div><div class="v num">'+cnt(o.rating,'dec1')+'</div></div><div class="mt"><div class="l">评价数</div><div class="v num">'+cnt(o.reviews)+'</div></div></div>'+(isNum(o.shop_score)?'<div style="margin-top:12px;font-size:12px">店铺分 / 100</div>'+hbar(o.shop_score,'#9DFB8D'):'')+'<p class="note" style="margin:8px 0 0">'+esc(o.note)+'</p>')};
- g+=plat(BM+'美团外卖','⭐',r.meituan); g+=plat(BT+'淘宝闪购','⭐',r.taobao);
- g+= r.dianping? card('c4','🍽️','大众点评','',' <div class="mtiles"><div class="mt"><div class="l">星级</div><div class="v num">'+cnt(r.dianping.rating,'dec1')+'</div></div><div class="mt"><div class="l">评价数</div><div class="v num">'+cnt(r.dianping.reviews)+'</div></div><div class="mt"><div class="l">口味/环境/服务</div><div class="v num">'+esc(r.dianping.sub||'—')+'</div></div></div>')
-   : card('c4','🍽️','大众点评','未接入','<div class="ph"><div class="big">未接入</div><div class="mtiles"><div class="mt"><div class="l">星级</div><div class="v nc">未接入</div></div><div class="mt"><div class="l">评价数</div><div class="v nc">未接入</div></div><div class="mt"><div class="l">口味/服务</div><div class="v nc">未接入</div></div></div><p class="note" style="margin:10px 0 0">接入后写 data.json 的 reputation.dianping：{rating, reviews, sub, updated, note}。</p></div>');
- g+=card('c12','📝','说明','','<p class="note" style="margin:0">'+esc(r.note||'')+'</p>');
- return g+'</div>'}
-
-/* ---------- tab: 菜品 ---------- */
-function vDish(){var ds=D.dishes, items=ds.items, cats=['全部'].concat(items.map(function(x){return x.cat}).filter(function(c,i,a){return a.indexOf(c)===i}));
- var shown=items.filter(function(x){return S.dcat==='全部'||x.cat===S.dcat}), mx=Math.max.apply(null,items.map(function(x){return x.total}).concat([1]));
- var tot=items.reduce(function(a,x){return a+x.total},0), tb=items.reduce(function(a,x){return a+x.bounty},0), add=items.filter(function(x){return x.cat==='加料'}).reduce(function(a,x){return a+x.total},0);
- var col={'主食碗':'#E6FB4D','意面':'#E6FB4D','双拼/四件套':'#FF875F','Brunch':'#FF875F','酸奶碗':'#BDA6FF','饮品':'#9DFB8D','汤':'#9DFB8D','加料':'#B7C0B5'};
+/* ================= 菜品 ================= */
+function vDish(){var ds=D.dishes,items=ds.items,cats=['全部'].concat(items.map(function(x){return x.cat}).filter(function(c,i,a){return a.indexOf(c)===i}));
+ var shown=items.filter(function(x){return S.dcat==='全部'||x.cat===S.dcat}),mx=Math.max.apply(null,items.map(function(x){return x.total}).concat([1]));
+ var tot=items.reduce(function(a,x){return a+x.total},0),tb=items.reduce(function(a,x){return a+x.bounty},0),add=items.filter(function(x){return x.cat==='加料'}).reduce(function(a,x){return a+x.total},0);
+ var col={'主食碗':'#C4DD3A','意面':'#C4DD3A','双拼/四件套':'#FF8A65','Brunch':'#FF8A65','酸奶碗':'#B9A3FF','饮品':'#8EE6A0','汤':'#8EE6A0','加料':'#C3CBC1'};
+ var k='<div class="kpis k4">'+[['出餐份数',tot,'#C4DD3A'],['非加料',tot-add,'#FF8A65'],['赏金单份数',tb,'#A88CFF'],['菜品数',items.length,'#5FCB7A']].map(function(x){return '<section class="card kpi" style="--acc:'+x[2]+'"><div class="k"><span>'+x[0]+'</span><span class="dot"></span></div><div class="v">'+cnt(x[1])+'</div><div class="n">'+esc(ds.caption)+'</div></section>'}).join('')+'</div>';
  var g='<div class="grid">';
- g+='<div class="c12"><div class="kpis kpis4" style="margin:0">'+[['出餐份数',tot,'#E6FB4D'],['非加料',tot-add,'#FF875F'],['赏金单份数',tb,'#BDA6FF'],['菜品数',items.length,'#9DFB8D']].map(function(k){return '<section class="card kpi" style="--acc:'+k[2]+'"><div class="k">'+k[0]+'<span class="tag">'+esc(ds.period_tag||'今日')+'</span></div><div class="v">'+cnt(k[1])+'</div></section>'}).join('')+'</div></div>';
- g+=card('c8','🍲','出餐榜',esc(ds.caption),'<div class="chips" id="dcats">'+cats.map(function(c){return '<button class="chip'+(c===S.dcat?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+'</div>'+
-  shown.map(function(x){var rk=items.indexOf(x)+1;return '<div class="dish"><span class="rk">'+(rk<10?'0':'')+rk+'</span><div style="min-width:0"><div class="nm">'+esc(x.name)+'</div><div class="meta">'+esc(x.cat)+' · '+BM+x.mt+' '+BT+x.tb+' · 赏金单 '+x.bounty+(isNum(x.unit_cost)?' · 单份成本 '+money(x.unit_cost):' · 成本待确认')+'</div>'+hbar(x.total/mx*100,col[x.cat]||'#B7C0B5')+'</div><span class="tot num">'+cnt(x.total)+'</span></div>'}).join(''));
- g+=card('c4','🏆','累计前三',esc(ds.cumulative.label),ds.cumulative.items.map(function(x,i){return '<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span><b style="color:#9AA49A;margin-right:6px">0'+(i+1)+'</b>'+esc(x.name)+'</span><b class="num" style="font-size:20px">'+cnt(x.n)+'<span style="font-size:11px;font-weight:400"> 份</span></b></div>'+hbar(x.n/ds.cumulative.items[0].n*100,['#E6FB4D','#FF875F','#9DFB8D'][i])+'</div>'}).join('')+'<p class="note">'+esc(ds.note)+'</p>');
- return g+'</div>'}
+ g+=card('c8','🍲','销量排行',esc(ds.caption),'<div class="chips">'+cats.map(function(c){return '<button class="chip'+(c===S.dcat?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+'</div>'+
+  shown.map(function(x){var rk=items.indexOf(x)+1;return '<div class="dish"><span class="rk">'+(rk<10?'0':'')+rk+'</span><div style="min-width:0"><div class="nm">'+esc(x.name)+'</div><div class="meta">'+esc(x.cat)+' · '+PI('mt',1)+x.mt+' '+PI('tb',1)+x.tb+' · 赏金单 '+x.bounty+(isNum(x.unit_cost)?' · 单份成本 '+money(x.unit_cost):' · <span class="miss">成本待确认</span>')+'</div>'+hbar(x.total/mx*100,col[x.cat]||'#C3CBC1',6)+'</div><span class="tot num">'+cnt(x.total)+'</span></div>'}).join(''));
+ g+=card('c4','🏆','累计前三',esc(ds.cumulative.label),ds.cumulative.items.map(function(x,i){return '<div style="margin:14px 0"><div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px"><span><b style="color:#A3ACA3;margin-right:6px">0'+(i+1)+'</b>'+esc(x.name)+'</span><b class="num" style="font-size:21px">'+cnt(x.n)+'<span style="font-size:11px;font-weight:400"> 份</span></b></div>'+hbar(x.n/ds.cumulative.items[0].n*100,['#C4DD3A','#FF8A65','#8EE6A0'][i],8)+'</div>'}).join('')+'<p class="note">'+esc(ds.note)+'</p>');
+ var pf=ds.profit;
+ if(pf){var main=pf.items.filter(function(x){return x.cat!=='加料'}),adds=pf.items.filter(function(x){return x.cat==='加料'});
+  var rowf=function(x){return '<tr><td><b>'+esc(x.name)+'</b><div class="note">'+esc(x.cat)+(x.single_orders?' · 单点 '+x.single_orders+' 单':'')+'</div></td><td class="num">'+(isNum(x.list_price)?money(x.list_price):'<span class="miss">未读到</span>')+(x.price_range?'<div class="note">'+money(x.price_range[0],0)+'–'+money(x.price_range[1],0)+'</div>':'')+'</td>'+
+   '<td class="num">'+(isNum(x.unit_cost)?money(x.unit_cost):'<span class="miss">成本待确认</span>')+'</td><td class="num">'+(isNum(x.income_avg)?money(x.income_avg):'<span class="nc">混合单不拆</span>')+'</td>'+
+   '<td class="num" style="font-weight:800;color:'+(isNum(x.profit)?'#2E8B57':'inherit')+'">'+(isNum(x.profit)?money(x.profit):'—')+'</td><td class="num">'+(isNum(x.profit_after_bounty)?money(x.profit_after_bounty):'—')+'</td><td class="num">'+(isNum(x.margin_on_income)?x.margin_on_income+'%':'—')+'</td><td class="num">'+(isNum(x.margin_on_price)?x.margin_on_price+'%':'—')+'</td></tr>'};
+  var head='<tr><th>菜品</th><th>售价</th><th>单份成本</th><th>单点到手均值</th><th>单份利润</th><th>扣赏金后</th><th>到手毛利率</th><th>标价毛利率</th></tr>';
+  g+=card('c12','💰','每道菜利润',esc(pf.caption),'<div class="tw"><table class="t">'+head+main.map(rowf).join('')+'</table></div><div class="sec" style="margin:16px 0 6px">加料</div><div class="tw"><table class="t">'+head+adds.map(rowf).join('')+'</table></div><p class="note" style="margin:10px 0 0">'+esc(pf.note)+' 标价毛利率 = (售价 − 单份成本) ÷ 售价，未扣平台费用。</p>');
+ }
+ return k+g+'</div>'}
 
-/* ---------- render ---------- */
-function segs(){
- $('tabs').innerHTML=TABS.map(function(t){return '<button class="tab'+(S.tab===t[0]?' on':'')+'" data-t="'+t[0]+'">'+t[1]+'<span class="dot'+(t[2]?' ok':'')+'" title="'+(t[2]?'已接入':'未接入')+'"></span></button>'}).join('');
- $('seg-period').innerHTML=PERIODS.map(function(p){return '<button data-p="'+p[0]+'" class="'+(S.period===p[0]?'on':'')+'">'+p[1]+'</button>'}).join('');
- $('seg-plat').innerHTML=PLATS.map(function(p){return '<button data-pl="'+p[0]+'" class="'+(S.plat===p[0]?'on':'')+'">'+p[1]+'</button>'}).join('');
- var showSeg=S.tab==='biz'; $('seg-period').style.display=showSeg?'':'none'; $('seg-plat').style.display=showSeg?'':'none';
+/* ================= 成本 ================= */
+function vCost(){var C=D.costs,l=L(),g='';
+ if(!C)return '<div class="card ph">成本表未导入：运行 python3 costs_import.py</div>';
+ var food=l?lcat(l.month,'食材进货'):null,foodP=l?lcat(l.prev_month,'食材进货'):null,m=D.margin;
+ var r1=l&&isNum(food)&&l.month.income?food/l.month.income*100:null,r0=l&&isNum(foodP)&&l.prev_month.income?foodP/l.prev_month.income*100:null;
+ g+='<div class="kpis k4">'+
+  '<section class="card kpi" style="--acc:#FF8A65"><div class="k"><span>食材采购占实收 · '+(l?l.month.month.slice(5)+'月':'')+'</span><span class="dot"></span></div><div class="v">'+cnt(r1,'pct','未导入')+'</div><div class="n">'+(l?'食材进货 '+money(food)+' ÷ 账本实收 '+money(l.month.income)+'（截至 '+md(l.as_of)+'）':'')+'</div></section>'+
+  '<section class="card kpi" style="--acc:#A88CFF"><div class="k"><span>上月 · '+(l?l.prev_month.month.slice(5)+'月':'')+'</span><span class="dot"></span></div><div class="v">'+cnt(r0,'pct','未导入')+'</div><div class="n">'+(l?'食材进货 '+money(foodP)+' ÷ 实收 '+money(l.prev_month.income)+'（开业月含备货）':'')+'</div></section>'+
+  '<section class="card kpi" style="--acc:#5FCB7A"><div class="k"><span>今日精确单 成本占到手</span><span class="dot"></span></div><div class="v">'+cnt(m.cost/m.income*100,'pct')+'</div><div class="n">'+m.exact_orders+'/'+m.total_orders+' 单：成本 '+money(m.cost)+' ÷ 到手 '+money(m.income)+'</div></section>'+
+  '<section class="card kpi" style="--acc:#C4DD3A"><div class="k"><span>成本表</span><span class="dot"></span></div><div class="v">'+cnt(C.items.length)+' 道</div><div class="n">包装每份 '+money(C.packaging)+' · 待补 '+C.missing.length+' 项</div></section></div>';
+ var cats=['主食碗','意面','Brunch','酸奶碗','饮品','汤'],mx=Math.max.apply(null,C.items.map(function(x){return x.with_pack}));
+ var tbl='<div class="tw"><table class="t"><tr><th>菜品</th><th>食材</th><th>包装</th><th>单份成本</th><th style="width:32%"></th></tr>';
+ cats.forEach(function(c){var its=C.items.filter(function(x){return x.cat===c}).sort(function(a,b){return b.with_pack-a.with_pack});if(!its.length)return;
+  tbl+='<tr><td colspan="5" style="background:var(--soft);font-weight:750;font-size:12px">'+c+'</td></tr>'+its.map(function(x){return '<tr><td>'+esc(x.name)+'</td><td class="num">'+show(x.ingredient,'money')+'</td><td class="num">'+money(C.packaging)+'</td><td class="num"><b>'+money(x.with_pack)+'</b></td><td><div class="stack" style="height:8px"><i style="width:'+((x.ingredient||0)/mx*100)+'%;background:#FF8A65"></i><i style="width:'+(C.packaging/mx*100)+'%;background:#C4DD3A"></i></div></td></tr>'}).join('')});
+ tbl+='</table></div><p class="note" style="margin:10px 0 0">来源：'+esc(C.source)+'（'+esc(C.file)+'）。'+esc(C.note)+' 条形：<span style="color:#FF8A65">■</span> 食材 <span style="color:#A9C22A">■</span> 包装。</p>';
+ g+='<div class="grid">'+card('c8','🧮','单份成本表','含包装 ¥'+C.packaging,tbl);
+ g+=card('c4','⚠️','成本待补',C.missing.length+' 项',C.missing.map(function(x){return '<div class="alert"><b class="d" style="background:#F0B429"></b><div><b style="font-size:13px">'+esc(x.name)+'</b><div class="note">'+esc(x.reason)+'</div></div></div>'}).join('')+'<p class="note" style="margin:8px 0 0">待补的菜在「菜品」页显示「成本待确认」，不用平均成本代替。</p>');
+ if(l){var M=l.month,PM=l.prev_month;g+=card('c12','🥬','食材与包材采购','账本 · 按到货日','<div class="tiles t4">'+[[PM.month,foodP,PM.income,'全月'],[M.month,food,M.income,'截至 '+md(l.as_of)]].map(function(x){return '<div class="tile"><div class="l">'+x[0].slice(5)+'月 食材进货（'+x[3]+'）</div><div class="v num">'+money(x[1])+'</div><div class="note">实收 '+money(x[2])+' · 占 '+(x[1]/x[2]*100).toFixed(1)+'%</div></div>'}).join('')+
+  '<div class="tile"><div class="l">本月包材耗材</div><div class="v num">'+money(lcat(M,'包材耗材'))+'</div><div class="note">上月 '+money(lcat(PM,'包材耗材'))+'</div></div><div class="tile"><div class="l">本月新挂账（欠供应商）</div><div class="v num">'+money(l.payables.suppliers.reduce(function(a,s){return a+s.this_month},0))+'</div><div class="note">明细见「财务」</div></div></div><p class="note" style="margin:10px 0 0">食材采购含挂账（先货后款），按到货日计。'+esc(l.note)+'</p>')}
+ return g+'</div>'}
+/* ================= 财务 ================= */
+function vFin(){var l=L();if(!l)return '<div class="card ph">账本未导入：运行 python3 ledger_import.py 记账本.xlsx</div>';
+ var M=l.month,PM=l.prev_month,mm=M.month.slice(5)+'月',pm=PM.month.slice(5)+'月';
+ var dlt=function(a,b,inv){if(!isNum(a)||!isNum(b)||!b)return '';var d=(a-b)/Math.abs(b)*100,good=inv?d<0:d>0;return '<span style="color:'+(good?'#2E8B57':'#D9573A')+'">'+(d>0?'↑':'↓')+Math.abs(d).toFixed(0)+'%</span>'};
+ var k='<div class="kpis k4">'+
+  '<section class="card kpi" style="--acc:#5FCB7A"><div class="k"><span>'+mm+'收入（实收）</span><span class="dot"></span></div><div class="v">'+cnt(M.income,'money')+'</div><div class="n">'+M.orders+' 单 · 营业额 '+money(M.gmv)+' · 记到 '+(M.income_last_date||'—')+'</div></section>'+
+  '<section class="card kpi" style="--acc:#FF8A65"><div class="k"><span>'+mm+'支出</span><span class="dot"></span></div><div class="v">'+cnt(M.expense,'money')+'</div><div class="n">记到 '+(M.expense_last_date||'—')+(l.missing_fixed.length?' · <b style="color:#B5543C">'+l.missing_fixed.map(function(x){return x.label+' '+money(x.budget,0)}).join('、')+' 未入账</b>':'')+'</div></section>'+
+  '<section class="card kpi" style="--acc:#141A16"><div class="k"><span>'+mm+'利润</span><span class="dot"></span></div><div class="v" style="color:'+(M.profit<0?'#B5543C':'#2E8B57')+'">'+cnt(M.profit,'money')+'</div><div class="n">利润率 '+(isNum(M.margin)?M.margin+'%':'—')+(l.missing_fixed.length?' · 还没扣房租、工资':'')+'</div></section>'+
+  '<section class="card kpi" style="--acc:#6FB4F2"><div class="k"><span>应收未到账</span><span class="dot"></span></div><div class="v">'+cnt(l.receivable.total,'money')+'</div><div class="n">'+l.receivable.count+' 笔 · '+l.receivable.by_platform.map(function(x){return esc(x.name)+' '+money(x.amount)}).join('、')+'</div></section></div>';
+ var g='<div class="grid">';
+ var cats=M.categories.map(function(c){var p=PM.categories.filter(function(x){return x.name===c.name})[0];return {n:c.name,a:c.amount,b:p?p.amount:0,bud:c.budget}}).filter(function(x){return x.a||x.b||x.bud});
+ var cm=Math.max.apply(null,cats.map(function(x){return Math.max(x.a,x.b,x.bud||0)}).concat([1]));
+ g+=card('c7','🧾','支出分类',mm+' vs '+pm,cats.map(function(x){return '<div style="display:grid;grid-template-columns:72px 1fr 110px;gap:12px;align-items:center;margin:8px 0;font-size:12.5px"><span>'+x.n+'</span><div>'+hbar(x.a/cm*100,'#FF8A65',9)+'<div style="height:4px"></div>'+hbar(x.b/cm*100,'#D0D6CB',5)+'</div><div style="text-align:right"><b class="num">'+money(x.a,0)+'</b><div class="note">'+pm+' '+money(x.b,0)+(x.bud?' · 预算 '+money(x.bud,0):'')+'</div></div></div>'}).join('')+'<p class="note" style="margin:6px 0 0"><span style="color:#FF8A65">■</span> '+mm+'（截至 '+md(l.as_of)+'）　<span style="color:#C5CBC0">■</span> '+pm+'全月。'+(l.missing_fixed.length?'房租、工资本月还没录，预算分别 '+l.missing_fixed.map(function(x){return money(x.budget,0)}).join('、')+'。':'')+'</p>');
+ var cmp=[['收入（实收）',M.income,PM.income,0],['支出',M.expense,PM.expense,1],['利润',M.profit,PM.profit,0],['有效单（账本）',M.orders,PM.orders,0]];
+ g+=card('c5','📊',mm+' vs '+pm,'账本口径','<table class="t"><tr><th>项目</th><th>'+mm+'（截至 '+md(l.as_of)+'）</th><th>'+pm+'全月</th><th>变化</th></tr>'+cmp.map(function(r){var u=r[0].indexOf('单')>=0;return '<tr><td>'+r[0]+'</td><td class="num"><b>'+(u?int(r[1]):money(r[1]))+'</b></td><td class="num">'+(u?int(r[2]):money(r[2]))+'</td><td class="num">'+(r[0]==='利润'?((r[1]-r[2]>=0?'<span style="color:#2E8B57">多 ':'<span style="color:#D9573A">少 ')+money(Math.abs(r[1]-r[2]),0)+'</span>'):dlt(r[1],r[2],r[3]))+'</td></tr>'}).join('')+'</table>'+
+  '<div class="sec" style="margin:16px 0 8px">'+mm+'收入按平台</div><div class="tw"><table class="t"><tr><th>平台</th><th>单数</th><th>营业额</th><th>实收</th><th>扣点率</th><th>未到账</th></tr>'+M.platforms.filter(function(p){return p.orders||p.net}).map(function(p){return '<tr><td>'+esc(p.name)+'</td><td>'+p.orders+'</td><td class="num">'+money(p.gmv)+'</td><td class="num">'+money(p.net)+'</td><td class="num">'+(isNum(p.take_rate)?p.take_rate+'%':'—')+'</td><td class="num">'+money(p.unpaid)+'</td></tr>'}).join('')+'</table></div><p class="note" style="margin:8px 0 0">比较时注意：'+mm+'只记到 '+md(l.as_of)+'；'+pm+'是开业月（10-12 开业），含开业备货、营销和工资。账本实收已扣赏金等平台费用。</p>');
+ var A=['0-15','16-30','31-45','45+'],AC={'0-15':'#8EE6A0','16-30':'#F0D04C','31-45':'#FF8A65','45+':'#D9573A'};
+ g+=card('c7','🚚','欠供应商','合计 '+money(l.payables.total)+' · '+l.payables.count+' 笔','<div class="tw"><table class="t"><tr><th>供应商</th><th>未付</th><th>笔数</th><th>最早到货</th><th>已欠</th><th>本月挂账</th><th style="width:28%">账龄</th></tr>'+l.payables.suppliers.map(function(s){return '<tr><td><b>'+esc(s.name)+'</b></td><td class="num"><b>'+money(s.unpaid)+'</b></td><td>'+s.count+'</td><td>'+s.earliest+'</td><td style="color:'+(s.days>30?'#B5543C':'inherit')+';font-weight:'+(s.days>30?750:400)+'">'+s.days+' 天</td><td class="num">'+money(s.this_month)+'</td><td><div class="stack">'+A.map(function(a){return '<i title="'+a+' 天 '+money(s.aging[a])+'" style="width:'+(s.aging[a]/s.unpaid*100)+'%;background:'+AC[a]+'"></i>'}).join('')+'</div></td></tr>'}).join('')+'</table></div>'+
+  '<div class="split" style="margin-top:10px">'+A.map(function(a){var t=l.payables.suppliers.reduce(function(x,s){return x+s.aging[a]},0);return '<span><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:'+AC[a]+';margin-right:4px;vertical-align:-1px"></i>'+a+' 天 '+money(t)+'</span>'}).join('')+'</div><p class="note" style="margin:6px 0 0">账龄按到货日算到 '+md(l.aging_as_of)+'；已欠超过 30 天标红。</p>');
+ g+=card('c5','🙋','待报销','员工垫付 '+money(l.reimburse.total),l.reimburse.people.map(function(p){return '<div class="row"><div class="grow1"><b>'+esc(p.name)+'</b><div class="note">'+p.count+' 笔 · 最早 '+p.earliest+'</div>'+hbar(p.amount/l.reimburse.total*100,'#B9A3FF',6)+'</div><div class="mid num">'+money(p.amount)+'</div></div>'}).join('')+
+  '<div class="sec" style="margin:14px 0 6px">股东投入（不算待报销）</div>'+l.reimburse.shareholders.map(function(p){return '<div class="row"><div class="grow1">'+esc(p.name)+'<div class="note">'+p.count+' 笔 · 最早 '+p.earliest+'</div></div><div class="num" style="color:var(--muted)">'+money(p.amount)+'</div></div>'}).join('')+'<p class="note" style="margin:8px 0 0">'+esc(l.reimburse.note)+'。</p>');
+ g+=card('c12','📒','账本信息','更新到 '+l.as_of,'<div class="tiles t4"><div class="tile"><div class="l">支出记到</div><div class="v">'+l.as_of+'</div></div><div class="tile"><div class="l">收入记到</div><div class="v">'+l.income_as_of+'</div></div><div class="tile"><div class="l">记录数</div><div class="v" style="font-size:15px">'+l.records.expense+' 笔支出 · '+l.records.income+' 笔收入</div></div><div class="tile"><div class="l">和账本自带合计核对</div><div class="v" style="color:'+(l.checks.length?'#B5543C':'#2E8B57')+'">'+(l.checks.length?l.checks.length+' 处不一致':'全部对上')+'</div></div></div>'+
+  (l.checks.length?'<p class="note">'+l.checks.map(esc).join('；')+'</p>':'')+'<p class="note" style="margin:10px 0 0">'+esc(l.note)+' 来源：珊珊记账本（文件时间 '+esc(l.file_mtime)+'）。新版记账本发来后运行 python3 ledger_import.py 新文件.xlsx 即可重算本页。</p>');
+ return k+g+'</div>'}
+
+/* ================= render ================= */
+function sub(){var t=TABS.filter(function(x){return x[0]===S.tab})[0][1],h='<span class="ttl">'+(S.tab==='home'?'经营总览':t)+'</span>';
+ if(S.tab==='biz'){h+='<div class="seg">'+[['today','今日'],['week','本周'],['month','本月']].map(function(p){return '<button data-p="'+p[0]+'" class="'+(S.period===p[0]?'on':'')+'">'+p[1]+'</button>'}).join('')+'</div><div class="seg">'+[['all','合计'],['mt','美团'],['tb','淘宝闪购']].map(function(p){return '<button data-pl="'+p[0]+'" class="'+(S.plat===p[0]?'on':'')+'">'+p[1]+'</button>'}).join('')+'</div>'}
+ h+=(S.tab==='fin'||S.tab==='cost')?(D.ledger?'<span class="pill n">账本截至 '+D.ledger.as_of+'</span>':''):'<span class="pill'+(/全天终版/.test(D.status)?' g':'')+'">'+esc(D.status)+'</span>';
+ h+='<span class="upd">更新时间：'+esc(D.updated_label)+' · 刷新于 '+new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date())+' 东京</span>';
+ $('sub').innerHTML=h;
+ $('tabs').innerHTML=TABS.map(function(x){return '<button class="tab'+(S.tab===x[0]?' on':'')+'" data-t="'+x[0]+'">'+x[1]+'</button>'}).join('');
 }
-function animate(root){
- root.classList.remove('go'); void root.offsetWidth;
- requestAnimationFrame(function(){root.classList.add('go');
-  root.querySelectorAll('circle.f').forEach(function(c){c.style.strokeDashoffset=c.getAttribute('data-off')});});
- var els=root.querySelectorAll('[data-count]'), t0=performance.now(), dur=1100;
- function step(now){var t=Math.min((now-t0)/dur,1), e=1-Math.pow(1-t,3);
-  els.forEach(function(el){el.textContent=fmtv(parseFloat(el.getAttribute('data-count'))*e,el.getAttribute('data-fmt'))});
-  if(t<1) requestAnimationFrame(step)}
- requestAnimationFrame(step);
+function animate(root){root.classList.remove('go');void root.offsetWidth;
+ requestAnimationFrame(function(){root.classList.add('go');root.querySelectorAll('circle.f').forEach(function(c){c.style.strokeDashoffset=c.getAttribute('data-off')})});
+ var els=root.querySelectorAll('[data-count]'),t0=performance.now(),dur=1100;
+ function step(now){var t=Math.min((now-t0)/dur,1),e=1-Math.pow(1-t,3);els.forEach(function(el){el.textContent=fmtv(parseFloat(el.getAttribute('data-count'))*e,el.getAttribute('data-fmt'))});if(t<1)requestAnimationFrame(step)}
+ requestAnimationFrame(step)}
+function render(anim){if(!D)return;sub();
+ var m=$('main'),V={home:vHome,biz:vBiz,mkt:vMkt,social:vSocial,dish:vDish,cost:vCost,fin:vFin}[S.tab];
+ m.innerHTML=V()+'<details class="foot"><summary>口径（完整说明）</summary><p>'+esc(D.footer)+'</p></details>';
+ if($('tip'))$('tip').innerHTML=tipHTML();
+ if(anim!==false)animate(m);else{m.classList.add('go');m.querySelectorAll('[data-count]').forEach(function(el){el.textContent=fmtv(parseFloat(el.getAttribute('data-count')),el.getAttribute('data-fmt'))});m.querySelectorAll('circle.f').forEach(function(c){c.style.strokeDashoffset=c.getAttribute('data-off')})}
 }
-function render(anim){
- if(!D) return; segs();
- var m=$('main'); m.innerHTML=(S.tab==='biz'?vBiz():S.tab==='ads'?vAds():S.tab==='social'?vSocial():S.tab==='rep'?vRep():vDish())+
-  '<details class="foot"><summary>口径（完整说明）</summary><p>'+esc(D.footer)+'</p></details>';
- if($('tip')) $('tip').innerHTML=tipHTML();
- if(anim!==false) animate(m); else { m.classList.add('go'); m.querySelectorAll('[data-count]').forEach(function(el){el.textContent=fmtv(parseFloat(el.getAttribute('data-count')),el.getAttribute('data-fmt'))}); m.querySelectorAll('circle.f').forEach(function(c){c.style.strokeDashoffset=c.getAttribute('data-off')}); }
-}
-document.addEventListener('click',function(e){var b=e.target.closest('button,[data-i]'); if(!b) return;
- if(b.dataset.t){S.tab=b.dataset.t;render();window.scrollTo({top:0,behavior:'smooth'})}
- else if(b.dataset.p){S.period=b.dataset.p;render()}
- else if(b.dataset.pl){S.plat=b.dataset.pl;render()}
- else if(b.dataset.m){S.metric=b.dataset.m;render()}
- else if(b.dataset.c){S.dcat=b.dataset.c;render()}
- else if(b.dataset.i!=null){S.hover=+b.dataset.i;render(false)}
-});
-document.addEventListener('mouseover',function(e){var h=e.target.closest&&e.target.closest('.hit'); if(!h) return; var i=+h.dataset.i; if(S.hover===i) return; S.hover=i; var svg=h.closest('svg'); svg.outerHTML=trendSVG(); var tr=document.querySelector('.trend svg'); document.querySelector('.trend').classList.add('go'); $('tip').innerHTML=tipHTML();});
-function clock(){var now=new Date(), f=function(tz,s){return new Intl.DateTimeFormat('zh-CN',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:s?'2-digit':undefined,hour12:false}).format(now)};
- $('clk').textContent=f('Asia/Tokyo',1); $('clk2').textContent='济南 '+f('Asia/Shanghai',0)}
-function load(force){
- return fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok) throw new Error('HTTP '+r.status);return r.json()}).then(function(j){
-  var changed=!D||D.updated_at!==j.updated_at; D=j; $('err').style.display='none';
-  $('status').textContent=j.status; $('status').className='pill'+(/全天终版/.test(j.status)?' g':'');
-  $('upd').textContent='更新时间：'+j.updated_label+' · 刷新于 '+new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date())+' 东京';
-  $('tick-inner').innerHTML=(j.alerts||[]).map(function(a){return '<em>●</em>'+esc(a)}).join('')+'<em>●</em>'+esc(j.header_note);
-  if(changed||force) render();
- }).catch(function(e){$('err').style.display='block';$('err').textContent='data.json 读取失败（'+e.message+'）'+(D?'，显示的是上次的数字。':'，请检查网络后点「刷新」。')});
-}
+document.addEventListener('click',function(e){var b=e.target.closest('button,[data-i]');if(!b)return;
+ if(b.dataset.t){S.tab=b.dataset.t;S.hover=null;render();try{history.replaceState(null,'','#'+S.tab)}catch(_){}window.scrollTo(0,0)}
+ else if(b.dataset.p){S.period=b.dataset.p;render()}else if(b.dataset.pl){S.plat=b.dataset.pl;render()}
+ else if(b.dataset.m){S.metric=b.dataset.m;render()}else if(b.dataset.c){S.dcat=b.dataset.c;render()}
+ else if(b.dataset.i!=null){S.hover=+b.dataset.i;render(false)}});
+document.addEventListener('mouseover',function(e){var h=e.target.closest&&e.target.closest('.hit');if(!h)return;var i=+h.dataset.i;if(S.hover===i)return;S.hover=i;var box=document.querySelector('.trend');if(box)box.innerHTML=trendSVG();if($('tip'))$('tip').innerHTML=tipHTML()});
+function clock(){var now=new Date(),f=function(tz,s){return new Intl.DateTimeFormat('zh-CN',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:s?'2-digit':undefined,hour12:false}).format(now)};$('clk').textContent=f('Asia/Tokyo',1);$('clk2').textContent='济南 '+f('Asia/Shanghai',0)}
+function load(force){return fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(function(j){
+  var changed=!D||D.updated_at!==j.updated_at||(D.ledger&&D.ledger.as_of)!==(j.ledger&&j.ledger.as_of);D=j;$('err').style.display='none';
+  var al=(j.alerts||[]).slice();if(j.ledger)al.push('欠供应商 '+money(j.ledger.payables.total)+'，待报销 '+money(j.ledger.reimburse.total)+'（账本截至 '+j.ledger.as_of.slice(5)+'）');
+  $('tick-inner').innerHTML=al.map(function(a){return '<em>●</em>'+esc(a)}).join('')+'<em style="color:#2E8B57">●</em>'+esc(j.header_note);
+  if(changed||force)render()}).catch(function(e){$('err').style.display='block';$('err').textContent='data.json 读取失败（'+e.message+'）'+(D?'，显示的是上次的数字。':'，请检查网络后点「刷新」。')})}
+var h0=(location.hash||'').slice(1);if(TABS.some(function(x){return x[0]===h0}))S.tab=h0;
 $('refresh').onclick=function(){load(true)};
-clock(); setInterval(clock,1000); load(); setInterval(function(){load(false)},5*60*1000);
-document.addEventListener('visibilitychange',function(){if(!document.hidden) load(false)});
-/* PWA */
-var deferred=null; window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;$('install').style.display=''});
+clock();setInterval(clock,1000);load();setInterval(function(){load(false)},5*60*1000);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)load(false)});
+var deferred=null;window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;$('install').style.display=''});
 $('install').onclick=function(){if(deferred){deferred.prompt();deferred=null;$('install').style.display='none'}};
-var ua=navigator.userAgent, standalone=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone;
-if(!standalone){ if(/MicroMessenger/i.test(ua)){$('hint').style.display='block';$('hint').textContent='在微信里可以直接看。想放到桌面：点右上角「…」→「在浏览器打开」，再用浏览器的「添加到主屏幕」。'}
- else if(/iPhone|iPad|iPod/i.test(ua)){$('hint').style.display='block';$('hint').textContent='放到主屏幕：Safari 底部「分享」→「添加到主屏幕」。'} }
-if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){window.__swOK=true}).catch(function(e){window.__swErr=String(e)})})}
+var ua=navigator.userAgent,standalone=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+if(!standalone){if(/MicroMessenger/i.test(ua)){$('hint').style.display='block';$('hint').textContent='在微信里可以直接看。想放到桌面：点右上角「…」→「在浏览器打开」，再用浏览器的「添加到主屏幕」。'}
+ else if(/iPhone|iPad|iPod/i.test(ua)){$('hint').style.display='block';$('hint').textContent='放到主屏幕：Safari 底部「分享」→「添加到主屏幕」。'}}
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(){window.__swOK=true}).catch(function(e){window.__swErr=String(e)})})}
 })();
 </script>
 </body>
