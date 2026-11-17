@@ -898,7 +898,37 @@
   "note": "店铺分取自两个平台的商家首页；美团评分 4.3（首页）。美团/淘宝评价数尚未拉取，显示「未读到」。大众点评 11-17 东京 14:30 读取。"
  },
  "social": {
-  "xiaohongshu": null,
+  "xiaohongshu": {
+   "account": "HerDeserve她她",
+   "handle": "95964876717",
+   "url": "https://www.xiaohongshu.com/user/profile/6a8e47f90000000013021801",
+   "following": 5,
+   "followers": 176,
+   "net": null,
+   "posts": 31,
+   "likes": 559,
+   "likes_label": "获赞与收藏",
+   "engagement": null,
+   "pinned": [
+    {
+     "title": "她她 HerDeserve",
+     "likes": 163
+    },
+    {
+     "title": "练够 300 卡，换一碗练后饭｜她她·请你吃",
+     "likes": 30
+    }
+   ],
+   "latest": {
+    "date": null,
+    "type": "笔记",
+    "title": "济南CBD｜打工人清爽沙拉碗",
+    "likes": 2
+   },
+   "last_active": "19小时前（约 11-16）",
+   "updated": "11-17 东京 14:35 读取",
+   "note": "主页读数：关注 5、粉丝 176、获赞与收藏 559、笔记 31；首次读数，净增要等下次读数后才有。"
+  },
   "douyin": {
    "account": "HerDeserve她她",
    "handle": "HerDeserve",
@@ -917,7 +947,7 @@
    "note": "数字取自抖音搜索卡片：作品 7、粉丝 4、获赞 19；首次读数，净增要等下次读数后才有。"
   },
   "miniapp": null,
-  "note": "小红书需要登录才能读，未接入；微信小程序是计划中的数据源，未接入。"
+  "note": "微信小程序是计划中的数据源，未接入。"
  },
  "alerts": [
   "美团推广余额 ¥0.05、淘宝 ¥0.00，自动充值都没开；美团 11-14 起连续第 4 天零投流",
