@@ -1679,41 +1679,292 @@
     "cat": "汤"
    }
   ],
-  "missing": [
+  "menu": [
+   {
+    "name": "卡萨布兰卡·北非蛋拌饭",
+    "cat": "主食碗",
+    "cost": 9.27,
+    "basis": "成本表「流心北非蛋饭」",
+    "estimated": false,
+    "month": 97
+   },
+   {
+    "name": "曼谷·椰香黄咖喱鸡腿拌饭",
+    "cat": "主食碗",
+    "cost": 7.77,
+    "basis": "成本表「椰香黄咖喱鸡腿饭」",
+    "estimated": false,
+    "month": 28
+   },
+   {
+    "name": "首尔·韩式甜辣牛肉拌饭",
+    "cat": "主食碗",
+    "cost": 7.39,
+    "basis": "成本表「甜辣现炒牛肉饭」",
+    "estimated": false,
+    "month": 13
+   },
+   {
+    "name": "京都·赤味增三文鱼拌饭",
+    "cat": "主食碗",
+    "cost": 17.47,
+    "basis": "成本表「西京味噌烤三文鱼饭」（待珊珊确认同一道）",
+    "estimated": false,
+    "month": 4
+   },
+   {
+    "name": "热那亚·青酱大虾笔管面",
+    "cat": "意面",
+    "cost": 14.97,
+    "basis": "成本表「罗勒青酱大虾意面」",
+    "estimated": false,
+    "month": 5
+   },
+   {
+    "name": "周末·蜂蜜脆皮鸡腿Brunch碗",
+    "cat": "Brunch",
+    "cost": 15.87,
+    "basis": "成本表「蜂蜜脆皮鸡腿Brunch碗(全套)」",
+    "estimated": false,
+    "month": 24
+   },
    {
     "name": "晴天·橄榄油香烤大虾Brunch碗",
-    "reason": "成本表只有「芒果炙烤大虾Brunch碗」，规格不同，待确认"
+    "cat": "Brunch",
+    "cost": 18.5,
+    "basis": "成本表「芒果炙烤大虾Brunch碗(全套)」（大拙确认按芒果炙烤算）",
+    "estimated": false,
+    "month": 17
    },
    {
-    "name": "「能量满满」四件套",
-    "reason": "组合按选配变化，成本表没有"
+    "name": "慢早晨·焦香三文鱼Brunch碗",
+    "cat": "Brunch",
+    "cost": 24.97,
+    "basis": "成本表「焦香三文鱼Brunch碗(全套)」",
+    "estimated": false,
+    "month": 6
    },
    {
-    "name": "双拼",
+    "name": "克莱因蓝·芭乐香蕉酸奶碗",
+    "cat": "酸奶碗",
+    "cost": 11.57,
+    "basis": "成本表「芭乐香蕉酸奶碗」",
+    "estimated": false,
+    "month": 5
+   },
+   {
+    "name": "芭蕾粉·草莓猕猴桃酸奶碗",
+    "cat": "酸奶碗",
+    "cost": 14.77,
+    "basis": "成本表「草莓猕猴桃酸奶碗」",
+    "estimated": false,
+    "month": 6
+   },
+   {
+    "name": "森林绿·芒果青提酸奶碗",
+    "cat": "酸奶碗",
+    "cost": 12.37,
+    "basis": "成本表「芒果青提酸奶碗」",
+    "estimated": false,
+    "month": 2
+   },
+   {
+    "name": "蜂蜜脆皮鸡腿·双拼套餐（配鸡肉肠）",
+    "cat": "双拼/四件套",
+    "cost": 9.12,
+    "basis": "按分量估：鸡腿 80g + 鸡肉肠 2 根 + 烤时蔬 120g + 糙米饭 140g + 清汤 300g + 包装",
+    "estimated": true,
+    "month": 15
+   },
+   {
+    "name": "蜂蜜脆皮鸡腿·双拼套餐（配三文鱼）",
+    "cat": "双拼/四件套",
+    "cost": 17.55,
+    "basis": "按分量估：鸡腿 80g + 三文鱼 70g + 烤时蔬 + 糙米饭 + 清汤 + 包装",
+    "estimated": true,
+    "month": null
+   },
+   {
+    "name": "香烤大虾·双拼套餐",
+    "cat": "双拼/四件套",
+    "cost": 9.25,
+    "basis": "按分量估：大虾 5 只 + 烤时蔬 + 糙米饭 + 清汤 + 包装（第二样选配未计）",
+    "estimated": true,
+    "month": 1
+   },
+   {
+    "name": "「能量满满」四件套（牛肉底）",
+    "cat": "双拼/四件套",
+    "cost": 9.19,
+    "basis": "按分量估：牛肉拌饭 + 烤蔬菜 120g + 清汤 + 包装",
+    "estimated": true,
+    "month": 14
+   },
+   {
+    "name": "「能量满满」四件套（北非蛋底）",
+    "cat": "双拼/四件套",
+    "cost": 11.07,
+    "basis": "按分量估：北非蛋拌饭 + 烤蔬菜 120g + 清汤 + 包装",
+    "estimated": true,
+    "month": null
+   },
+   {
+    "name": "意式·慢煮减脂蔬菜清汤",
+    "cat": "汤",
+    "cost": 3.67,
+    "basis": "成本表「减脂哈佛蔬菜汤」（待珊珊确认同一锅）",
+    "estimated": false,
+    "month": null
+   },
+   {
+    "name": "博洛尼亚·番茄肉酱细面",
+    "cat": "意面",
+    "cost": null,
+    "basis": "成本表没有",
+    "estimated": false,
+    "month": 1
+   },
+   {
+    "name": "法式·奶油南瓜浓汤",
+    "cat": "汤",
+    "cost": null,
+    "basis": "成本表没有",
+    "estimated": false,
+    "month": null
+   },
+   {
+    "name": "芒果炙烤大虾沙拉",
+    "cat": "沙拉",
+    "cost": null,
+    "basis": "成本表没有（11-04 卖过 1 份，是否还在卖待确认）",
+    "estimated": false,
+    "month": 1
+   }
+  ],
+  "addons": [
+   {
+    "name": "香料·混合烤时蔬120g",
+    "cost": 1.2,
+    "basis": "0.01 元/g"
+   },
+   {
+    "name": "橄榄油·太阳蛋1颗",
+    "cost": 0.79,
+    "basis": "煎蛋 0.79"
+   },
+   {
+    "name": "贝贝南瓜3块",
+    "cost": 0.33,
+    "basis": "南瓜 1 块 0.11"
+   },
+   {
+    "name": "香煎·嫩豆腐4块",
+    "cost": 0.24,
+    "basis": "豆腐 4 块 0.24"
+   },
+   {
+    "name": "焙煎芝麻汁25g",
+    "cost": 0.55,
+    "basis": "25g 0.55"
+   },
+   {
+    "name": "初榨橄榄油醋汁25g",
+    "cost": 0.6,
+    "basis": "25g 0.6"
+   },
+   {
+    "name": "慢炖·椰香黄咖喱鸡100g",
+    "cost": 1.0,
+    "basis": "咖喱鸡 0.01 元/g"
+   },
+   {
+    "name": "炭烤·烟熏鸡肉肠2根",
+    "cost": 2.07,
+    "basis": "3 根 3.1"
+   },
+   {
+    "name": "焦香煎·整块三文鱼70g",
+    "cost": 10.5,
+    "basis": "70g 10.5"
+   },
+   {
+    "name": "橄榄油·清炒菠菜90g",
+    "cost": 0.45,
+    "basis": "菠菜 24g 0.12"
+   },
+   {
+    "name": "三色糙米饭140g",
+    "cost": 0.78,
+    "basis": "米饭 0.0056 元/g"
+   },
+   {
+    "name": "罗勒松子青酱",
+    "cost": 3.3,
+    "basis": "按 30g 3.3（份量待确认）"
+   },
+   {
+    "name": "橄榄油香烤大虾3只",
+    "cost": 2.16,
+    "basis": "5 只 3.6"
+   },
+   {
+    "name": "蜂蜜脆皮鸡腿肉80g",
+    "cost": 1.4,
+    "basis": "鸡肉 80g 1.4"
+   },
+   {
+    "name": "韩式甜辣牛肉50g",
+    "cost": 1.5,
+    "basis": "0.03 元/g"
+   },
+   {
+    "name": "意大利面160g",
+    "cost": 2.4,
+    "basis": "意面 160g 2.4"
+   },
+   {
+    "name": "高膳食纤维·玉米40g",
+    "cost": 0.56,
+    "basis": "玉米粒 22g 0.31"
+   },
+   {
+    "name": "墨西哥牛油果25g",
+    "cost": null,
+    "basis": "成本表没有单价"
+   },
+   {
+    "name": "现烤·欧包2片",
+    "cost": null,
+    "basis": "成本表没有单价"
+   }
+  ],
+  "missing": [
+   {
+    "name": "博洛尼亚·番茄肉酱细面",
+    "reason": "成本表没有；本月 1 份"
+   },
+   {
+    "name": "法式·奶油南瓜浓汤",
     "reason": "成本表没有"
    },
    {
-    "name": "赤味增三文鱼拌饭",
-    "reason": "成本表没有（表里是「西京味噌烤三文鱼饭」），待确认是否同一道"
+    "name": "芒果炙烤大虾沙拉",
+    "reason": "成本表没有（11-04 卖过 1 份，是否还在卖待确认）；本月 1 份"
    },
    {
-    "name": "燕窝碗",
-    "reason": "成本表不含燕窝本身，无完整成本"
+    "name": "墨西哥牛油果25g",
+    "reason": "加料，成本表没有单价"
    },
    {
-    "name": "加料（太阳蛋、贝贝南瓜、糙米、青酱、三文鱼70g、咖喱鸡100g、芝麻汁）",
-    "reason": "成本表没有单独加料成本"
-   },
-   {
-    "name": "热那亚·罗勒青酱香烤大虾笔管面",
-    "reason": "暂按「罗勒青酱大虾意面」¥14.97 计，待确认是否同一配方"
+    "name": "现烤·欧包2片",
+    "reason": "加料，成本表没有单价"
    }
   ],
-  "note": "燕窝碗不含燕窝本身，无完整成本；成本只用这张表，不用平均成本。"
+  "note": "大拙 11-17 确认：在售菜一律用这张表（配方没大改）；Brunch 碗统一按全套计；双拼、四件套按分量估；加料按配料单价折算（不另加包装）。不用平均成本。"
  },
  "ledger": {
   "source": "ee66be38e695a8f4dfd44cb69ec346c0bbe588f8891c7da047a8a5e2a5fdfc62.xlsx",
-  "file_mtime": "2026-11-16 00:15",
+  "file_mtime": "2026-11-17 14:54",
   "as_of": "2026-11-14",
   "income_as_of": "2026-11-14",
   "aging_as_of": "2026-11-17",
@@ -1726,39 +1977,39 @@
    "income": 4497.5,
    "gmv": 10732.78,
    "orders": 222,
-   "expense": 5309.07,
-   "profit": -811.57,
-   "margin": -18.04,
+   "expense": 8309.07,
+   "profit": -3811.57,
+   "margin": -84.75,
    "categories": [
     {
      "name": "食材进货",
      "amount": 3865.52,
      "budget": null,
-     "share": 72.81
+     "share": 46.52
     },
     {
      "name": "包材耗材",
      "amount": 251.6,
      "budget": null,
-     "share": 4.74
+     "share": 3.03
     },
     {
      "name": "营销推广",
      "amount": 700.0,
      "budget": 3000.0,
-     "share": 13.18
+     "share": 8.42
     },
     {
      "name": "水电燃气",
      "amount": 400.0,
      "budget": null,
-     "share": 7.53
+     "share": 4.81
     },
     {
      "name": "日常杂费",
      "amount": 91.95,
      "budget": null,
-     "share": 1.73
+     "share": 1.11
     },
     {
      "name": "设备工具",
@@ -1774,9 +2025,10 @@
     },
     {
      "name": "房租物业",
-     "amount": 0.0,
+     "amount": 3000.0,
      "budget": 3000.0,
-     "share": 0.0
+     "share": 36.11,
+     "amortized": 3000.0
     },
     {
      "name": "人工工资",
@@ -1826,76 +2078,86 @@
     }
    ],
    "income_last_date": "11-14",
-   "expense_last_date": "11-14"
+   "expense_last_date": "11-14",
+   "book_expense": 5309.07,
+   "book_profit": -811.57,
+   "amortized": [
+    {
+     "name": "房租物业",
+     "label": "房租",
+     "amount": 3000.0
+    }
+   ]
   },
   "prev_month": {
    "month": "2026-10",
    "income": 7687.59,
    "gmv": 14396.7,
    "orders": 306,
-   "expense": 24752.42,
-   "profit": -17064.83,
-   "margin": -221.98,
+   "expense": 27752.42,
+   "profit": -20064.83,
+   "margin": -261.0,
    "categories": [
     {
      "name": "食材进货",
      "amount": 8650.73,
      "budget": null,
-     "share": 34.95
+     "share": 31.17
     },
     {
      "name": "包材耗材",
      "amount": 725.49,
      "budget": null,
-     "share": 2.93
+     "share": 2.61
     },
     {
      "name": "营销推广",
      "amount": 7821.38,
      "budget": 3000.0,
-     "share": 31.6
+     "share": 28.18
     },
     {
      "name": "水电燃气",
      "amount": 600.0,
      "budget": null,
-     "share": 2.42
+     "share": 2.16
     },
     {
      "name": "日常杂费",
      "amount": 317.64,
      "budget": null,
-     "share": 1.28
+     "share": 1.14
     },
     {
      "name": "设备工具",
      "amount": 499.91,
      "budget": null,
-     "share": 2.02
+     "share": 1.8
     },
     {
      "name": "证照行政",
      "amount": 100.0,
      "budget": null,
-     "share": 0.4
+     "share": 0.36
     },
     {
      "name": "房租物业",
-     "amount": 0.0,
+     "amount": 3000.0,
      "budget": 3000.0,
-     "share": 0.0
+     "share": 10.81,
+     "amortized": 3000.0
     },
     {
      "name": "人工工资",
      "amount": 5983.0,
      "budget": 13000.0,
-     "share": 24.17
+     "share": 21.56
     },
     {
      "name": "其他",
      "amount": 54.27,
      "budget": null,
-     "share": 0.22
+     "share": 0.2
     }
    ],
    "platforms": [
@@ -1933,14 +2195,18 @@
     }
    ],
    "income_last_date": "10-31",
-   "expense_last_date": "10-31"
+   "expense_last_date": "10-31",
+   "book_expense": 24752.42,
+   "book_profit": -17064.83,
+   "amortized": [
+    {
+     "name": "房租物业",
+     "label": "房租",
+     "amount": 3000.0
+    }
+   ]
   },
   "missing_fixed": [
-   {
-    "cat": "房租物业",
-    "label": "房租",
-    "budget": 3000.0
-   },
    {
     "cat": "人工工资",
     "label": "工资",
@@ -2072,12 +2338,53 @@
    "note": "拙总、车总的垫付按股东投入单列，不算进待报销"
   },
   "checks": [],
-  "note": "账本记到 11-14（支出）/ 11-14（收入），之后的流水还没录。本月房租（预算 ¥3,000）、工资（预算 ¥13,000）尚未入账，本月利润还没扣这两项。"
+  "rent": {
+   "cat": "房租物业",
+   "label": "房租",
+   "monthly": 3000.0,
+   "note": "房租已预付约半年（约 6/7 月至 2027-01），按每月 ¥3,000 摊进成本，账本里不再单独录"
+  },
+  "bounty_note": "美团实收已扣赏金联盟，账本利润里不再把赏金当支出另记",
+  "confirmed": [
+   {
+    "date": "10-22",
+    "item": "美团运营",
+    "amount": 1800.0,
+    "what": "美团代运营费",
+    "contract": true,
+    "invoice": null
+   },
+   {
+    "date": "10-19",
+    "item": "小程序",
+    "amount": 880.0,
+    "what": "第三方小程序开发",
+    "contract": true,
+    "invoice": null
+   }
+  ],
+  "tasting": {
+   "count": 8,
+   "dates": "10-12 至 10-16",
+   "names": [
+    "柠瘦瘦",
+    "凯蒂姐（10-14）",
+    "万事万般宜",
+    "好🍙",
+    "小粉猪",
+    "胯骨轴子",
+    "nice西柚",
+    "凯蒂姐（10-15）"
+   ],
+   "cost": null,
+   "note": "8 条达人试吃记录金额 ¥0，账本没写吃的是哪道菜，食材成本暂未计入；待珊珊补菜名后按成本表补记"
+  },
+  "note": "房租按每月 ¥3,000 摊销计入（已预付），房租不再算缺项。美团实收已扣赏金，不另记。账本记到 11-14（支出）/ 11-14（收入），之后的流水还没录。本月工资（预算 ¥13,000）尚未入账，本月利润还没扣这一项。"
  },
  "feedback": {
   "status": "ok",
   "pending_text": "待拉取，今晚 19:30 更新",
-  "updated": "11-17 15:07",
+  "updated": "11-17 15:38",
   "items": [
    {
     "date": "11-03",
