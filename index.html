@@ -131,6 +131,7 @@ details.foot p{font-size:11.5px;color:var(--muted);line-height:1.8;margin:8px 0 
  .card{padding:16px}.hero-n{font-size:58px}.t4{grid-template-columns:repeat(2,minmax(0,1fr))}
  .herosplit{flex-direction:column;align-items:stretch!important}.herosplit .tiles{min-width:0!important}
 }
+.fbt td,.fbt th{text-align:left!important;vertical-align:top}.fbt td:nth-child(5){line-height:1.55;min-width:260px}.fbt td:nth-child(4){font-size:12px;max-width:200px}.fbt td:nth-child(1),.fbt td:nth-child(2),.fbt td:nth-child(3){white-space:nowrap}
 </style>
 </head>
 <body>
@@ -217,9 +218,9 @@ function vHome(){
   return '<div class="row" style="padding:9px 0">'+PI(k)+'<div class="grow1"><div style="font-size:13px;font-weight:700">'+name+'</div><div class="note">'+sub+(dl!=null?' · <span style="color:'+(dl>0?'#2E8B57':dl<0?'#D9573A':'#7A847B')+'">'+(dl>0?'↑'+dl:dl<0?'↓'+(-dl):'持平')+'</span>':'')+'</div></div><div style="text-align:right"><div class="big" style="font-size:26px">'+(sc!=null?cnt(sc,isR?'dec1':'int'):o?'<span class="miss" style="font-size:13px">未读到</span>':'<span class="nc" style="font-size:13px">未接入</span>')+'</div><div class="note" style="font-size:10.5px">'+(isR?'星级':'店铺分')+'</div></div></div>'};
  g+=card('c3','⭐','平台评分','店铺分 · 星级',rr('mt','美团外卖',R.meituan)+rr('tb','淘宝闪购',R.taobao)+rr('dp','大众点评',R.dianping));
  var top=D.dishes.items[0],pf=(D.dishes.profit&&D.dishes.profit.items||[]).filter(function(x){return x.name===top.name})[0],cum=D.dishes.cumulative.items.filter(function(x){return x.name===top.name})[0];
- g+=card('c3','🏆','今日爆款','出餐第 1',
-  '<div style="font-size:14.5px;font-weight:800;line-height:1.35">'+esc(top.name)+'</div><div style="display:flex;align-items:baseline;gap:8px;margin:6px 0 4px"><span class="big">'+cnt(top.total)+'</span><span class="note">份</span><span class="split" style="margin-left:6px">'+PI('mt',1)+top.mt+' '+PI('tb',1)+top.tb+'</span></div>'+
-  '<div class="tiles t2" style="margin-top:10px"><div class="tile"><div class="l">单份利润</div><div class="v num" style="font-size:15px">'+(pf&&isNum(pf.profit)?money(pf.profit):'<span class="miss" style="font-size:12px">成本待确认</span>')+'</div></div><div class="tile"><div class="l">累计</div><div class="v num" style="font-size:15px">'+(cum?cum.n+' 份':'<span class="miss" style="font-size:12px">未读到</span>')+'</div></div></div><div class="note" style="margin-top:8px">赏金单 '+top.bounty+' 份 · 单份成本 '+(isNum(top.unit_cost)?money(top.unit_cost):'待确认')+'</div>');
+ var dm=(D.dishes||{}).main;
+ g+=dm?card('c3','🏆','主菜排行','本月 '+dm.range.month.split(' 至 ')[0]+' 起',(function(){var row=function(x,i,bad){return '<div style="display:flex;justify-content:space-between;gap:6px;font-size:12.5px;padding:3px 0"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><b style="color:#A3ACA3;margin-right:5px">'+(i+1)+'</b>'+esc(/双拼|四件套/.test(x.name)?x.name:x.name.split('·').pop())+'</span><b class="num" style="color:'+(bad&&x.cand?'#B5543C':'#141A16')+'">'+x.n+'<span style="font-size:10px;font-weight:400"> 份</span></b></div>'};
+  return '<div class="lbl" style="margin-bottom:2px">前三</div>'+dm.top5_month.slice(0,3).map(function(x,i){return row(x,i)}).join('')+'<div class="lbl" style="margin:8px 0 2px">后三 <span class="note">（红字 = 淘汰候选）</span></div>'+dm.bottom5_month.slice(0,3).map(function(x,i){return row(x,i,1)}).join('')+'<div class="note" style="margin-top:6px">今日第 1：'+esc(dm.top5_month.length?(function(){var t=dm.rows.slice().sort(function(a,b){return b.today.n-a.today.n})[0];return (/双拼|四件套/.test(t.name)?t.name:t.name.split('·').pop())+' '+t.today.n+' 份'})():'')+'</div>'})()):'';
  var pm=D.promo,b=D.bounty,bal=function(k,name,o){var low=isNum(o.balance)&&o.balance<10;return '<div class="row" style="padding:8px 0">'+PI(k)+'<div class="grow1"><div style="font-size:13px;font-weight:700">'+name+'</div>'+(low?'<span class="pill r" style="font-size:10.5px;padding:1px 7px">余额不足</span>':'<div class="note">'+esc(o.status)+'</div>')+'</div><div class="mid num" style="color:'+(low?'#B5543C':'#141A16')+'">'+show(o.balance,'money')+'</div></div>'};
  g+=card('c3','📣','投流 · 赏金','今日',bal('mt','营销魔方余额',pm.mt)+bal('tb','推广魔方余额',pm.tb)+
   '<div style="border-top:1px solid #F1F3EE;padding-top:10px;margin-top:2px"><div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">赏金联盟 '+b.orders+' 单</span><b class="num" style="font-size:18px">'+cnt(b.total,'money')+'</b></div><div style="margin:6px 0 4px">'+hbar(b.share_of_mt_income,'#B9A3FF',6)+'</div><div class="note">占美团到手 '+b.share_of_mt_income.toFixed(1)+'% · 扣后每单 <b style="color:#B5543C">'+money(b.per_order)+'</b></div></div>');
@@ -289,7 +290,23 @@ function marginBox(){var m=D.margin,g=D.gender;
  '<div style="font-size:12px;margin-bottom:6px">'+PI('mt',1)+'美团称呼：先生 '+g.mt.male+' · 女士 '+g.mt.female+'</div><div class="stack"><i style="width:'+(g.mt.male/(g.mt.male+g.mt.female)*100)+'%;background:#8CC8FF"></i><i style="width:'+(g.mt.female/(g.mt.male+g.mt.female)*100)+'%;background:#FFB0C2"></i></div><div class="note" style="margin-top:6px">'+PI('tb',1)+'淘宝：'+esc(g.tb.note)+'</div>'}
 
 /* ================= 营销 ================= */
-function vMkt(){var pm=D.promo,b=D.bounty,g='<div class="grid">';
+function vFeedback(){var fb=D.feedback||{status:'pending',pending_text:'待拉取，今晚 19:30 更新',items:[]},its=fb.items||[];
+ if(fb.status!=='ok'||!its.length){
+  var empty=fb.status==='ok'?'<div class="card ph" style="box-shadow:none;margin:0">'+(fb.updated?esc(fb.updated)+' 已拉取：':'')+'美团、淘宝闪购暂无差评和中评</div>':
+   '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">'+[['mt','美团'],['tb','淘宝闪购']].map(function(p){return '<div class="tile" style="text-align:left"><div class="l">'+PI(p[0],1)+' '+p[1]+' 差评 / 中评</div><div class="v" style="font-size:15px;color:#B5543C">'+esc(fb.pending_text||'待拉取，今晚 19:30 更新')+'</div></div>'}).join('')+'</div>';
+  return card('c12','💬','客户反馈','美团 · 淘宝闪购 差评与中评',empty)}
+ var c=fb.counts||{},tags={},sm=fb.summary||{},mt=sm['美团']||{},tb=sm['淘宝闪购']||{};its.forEach(function(x){if(x.tag)tags[x.tag]=(tags[x.tag]||0)+1});
+ var st=function(n){if(!isNum(n))return '<span class="miss">未读到</span>';var s='';for(var i=1;i<=5;i++)s+='<span style="color:'+(i<=n?'#F0B429':'#DDE2DA')+'">★</span>';return s};
+ var sv=function(v){return v==null?'<span class="miss">未读到</span>':esc(v)};
+ var tile=function(l,v,n,col){return '<div class="tile"><div class="l">'+l+'</div><div class="v num" style="font-size:18px;color:'+(col||'#141A16')+'">'+v+'</div>'+(n?'<div class="note">'+n+'</div>':'')+'</div>'};
+ var head='<div class="tiles t4" style="margin-bottom:8px">'+tile('带问题的评价',c.total,'淘宝闪购 '+(c['淘宝闪购']||0)+' · 美团 '+(c['美团']||0))+tile('差评（≤2 星）',c.bad,'','#B5543C')+tile('未回复',c.unreplied,'','#B5543C')+tile(PI('mt',1)+' 美团近 30 日差评',sv(mt.bad_30d),'内容未读到 · 申诉已驳回','#B5543C')+'</div>'+
+  '<div class="tiles t4" style="margin-bottom:12px">'+tile(PI('tb',1)+' 淘宝闪购评分',sv(tb.rating),'口味 '+sv(tb.taste)+' · 包装 '+sv(tb.packaging))+tile('淘宝 60 天好评率','口味 '+sv(tb.taste_good_60d),'包装 '+sv(tb.packaging_good_60d))+tile('淘宝 30 天复购率',sv(tb.repurchase_30d),'近 60 天评价 '+sv(tb.reviews_60d)+' 条')+tile(PI('mt',1)+' 美团评分',sv(mt.rating),'店铺分 '+sv(mt.shop_points))+'</div>'+
+  (Object.keys(tags).length?'<div class="chips" style="margin-bottom:10px">'+Object.keys(tags).map(function(t){return '<span class="chip">'+esc(t)+(tags[t]>1?' '+tags[t]:'')+'</span>'}).join('')+'</div>':'');
+ var tbl='<div class="tw"><table class="t fbt"><tr><th style="text-align:left">日期</th><th style="text-align:left">平台</th><th style="text-align:left">星级</th><th style="text-align:left">菜品</th><th style="width:40%;text-align:left">评价内容</th><th style="text-align:left">问题</th><th>已回复</th></tr>'+its.map(function(x){
+  return '<tr style="text-align:left;vertical-align:top"><td class="num" style="white-space:nowrap;text-align:left">'+esc(x.date)+'</td><td style="white-space:nowrap;text-align:left">'+PI(x.platform==='美团'?'mt':'tb',1)+' '+esc(x.platform)+'</td><td style="white-space:nowrap">'+st(x.stars)+'</td><td>'+(x.dish?esc(x.dish):'<span class="nc">未写</span>')+'</td><td>'+esc(x.text)+'</td><td>'+(x.tag?'<span class="pill r" style="font-size:10.5px;padding:1px 7px">'+esc(x.tag)+'</span>':'—')+'</td><td>'+(x.replied===true?'<span style="color:#2E8B57;font-weight:700">是</span>'+(x.reply_date?'<div class="note">'+esc(x.reply_date)+'</div>':''):x.replied===false?'<b style="color:#B5543C">否</b>':'<span class="miss">未读到</span>')+'</td></tr>'}).join('')+'</table></div>';
+ var foot='<p class="note" style="margin:10px 0 0">'+(fb.mt_pending?'美团：评价列表页打不开，逐条差评内容'+esc(fb.pending_text||'待拉取')+'。':'')+esc(mt.note||'')+' '+esc(tb.note||'')+'</p>';
+ return card('c12','💬','客户反馈','美团 · 淘宝闪购 差评与中评'+(fb.updated?' · '+esc(fb.updated)+' 拉取':''),head+tbl+foot)}
+function vMkt(){var pm=D.promo,b=D.bounty,g='<div class="grid">'+vFeedback();
  var pc=function(o,extra){var low=isNum(o.balance)&&o.balance<10;return '<div class="tiles t3"><div class="tile"><div class="l">今日消费</div><div class="v num">'+cnt(o.spend,'money')+'</div></div><div class="tile"><div class="l">曝光提升</div><div class="v num">'+cnt(o.expo)+'</div></div><div class="tile"><div class="l">进店提升</div><div class="v num">'+cnt(o.visit)+'</div></div></div>'+
   '<div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px;font-size:12.5px"><span>账户余额</span><b class="num" style="color:'+(low?'#B5543C':'#141A16')+'">'+show(o.balance,'money')+(low?' · 余额不足':'')+'</b></div>'+hbar(Math.min(100,(o.balance||0)/50*100),'#D9573A')+'<p class="note" style="margin:10px 0 0">'+esc(o.status)+'（页面 '+esc(o.when)+'）。'+extra+'</p>'};
  g+=card('c4','',PI('mt')+' 美团 营销魔方','门店推广',pc(pm.mt,esc(pm.mt.week.label)));
@@ -333,23 +350,27 @@ function vSocial(){var g='<div class="sec" style="margin-top:4px">社媒</div><d
  return g+'</div>'}
 
 /* ================= 菜品 ================= */
-function vDish(){var ds=D.dishes,items=ds.items,cats=['全部'].concat(items.map(function(x){return x.cat}).filter(function(c,i,a){return a.indexOf(c)===i}));
- var shown=items.filter(function(x){return S.dcat==='全部'||x.cat===S.dcat}),mx=Math.max.apply(null,items.map(function(x){return x.total}).concat([1]));
- var tot=items.reduce(function(a,x){return a+x.total},0),tb=items.reduce(function(a,x){return a+x.bounty},0),add=items.filter(function(x){return x.cat==='加料'}).reduce(function(a,x){return a+x.total},0);
- var col={'主食碗':'#C4DD3A','意面':'#C4DD3A','双拼/四件套':'#FF8A65','Brunch':'#FF8A65','酸奶碗':'#B9A3FF','饮品':'#8EE6A0','汤':'#8EE6A0','加料':'#C3CBC1'};
- var k='<div class="kpis k4">'+[['出餐份数',tot,'#C4DD3A'],['非加料',tot-add,'#FF8A65'],['赏金单份数',tb,'#A88CFF'],['菜品数',items.length,'#5FCB7A']].map(function(x){return '<section class="card kpi" style="--acc:'+x[2]+'"><div class="k"><span>'+x[0]+'</span><span class="dot"></span></div><div class="v">'+cnt(x[1])+'</div><div class="n">'+esc(ds.caption)+'</div></section>'}).join('')+'</div>';
- var g='<div class="grid">';
- g+=card('c8','🍲','销量排行',esc(ds.caption),'<div class="chips">'+cats.map(function(c){return '<button class="chip'+(c===S.dcat?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+'</div>'+
-  shown.map(function(x){var rk=items.indexOf(x)+1;return '<div class="dish"><span class="rk">'+(rk<10?'0':'')+rk+'</span><div style="min-width:0"><div class="nm">'+esc(x.name)+'</div><div class="meta">'+esc(x.cat)+' · '+PI('mt',1)+x.mt+' '+PI('tb',1)+x.tb+' · 赏金单 '+x.bounty+(isNum(x.unit_cost)?' · 单份成本 '+money(x.unit_cost):' · <span class="miss">成本待确认</span>')+'</div>'+hbar(x.total/mx*100,col[x.cat]||'#C3CBC1',6)+'</div><span class="tot num">'+cnt(x.total)+'</span></div>'}).join(''));
- g+=card('c4','🏆','累计前三',esc(ds.cumulative.label),ds.cumulative.items.map(function(x,i){return '<div style="margin:14px 0"><div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px"><span><b style="color:#A3ACA3;margin-right:6px">0'+(i+1)+'</b>'+esc(x.name)+'</span><b class="num" style="font-size:21px">'+cnt(x.n)+'<span style="font-size:11px;font-weight:400"> 份</span></b></div>'+hbar(x.n/ds.cumulative.items[0].n*100,['#C4DD3A','#FF8A65','#8EE6A0'][i],8)+'</div>'}).join('')+'<p class="note">'+esc(ds.note)+'</p>');
- var pf=ds.profit;
- if(pf){var main=pf.items.filter(function(x){return x.cat!=='加料'}),adds=pf.items.filter(function(x){return x.cat==='加料'});
-  var rowf=function(x){return '<tr><td><b>'+esc(x.name)+'</b><div class="note">'+esc(x.cat)+(x.single_orders?' · 单点 '+x.single_orders+' 单':'')+'</div></td><td class="num">'+(isNum(x.list_price)?money(x.list_price):'<span class="miss">未读到</span>')+(x.price_range?'<div class="note">'+money(x.price_range[0],0)+'–'+money(x.price_range[1],0)+'</div>':'')+'</td>'+
-   '<td class="num">'+(isNum(x.unit_cost)?money(x.unit_cost):'<span class="miss">成本待确认</span>')+'</td><td class="num">'+(isNum(x.income_avg)?money(x.income_avg):'<span class="nc">混合单不拆</span>')+'</td>'+
-   '<td class="num" style="font-weight:800;color:'+(isNum(x.profit)?'#2E8B57':'inherit')+'">'+(isNum(x.profit)?money(x.profit):'—')+'</td><td class="num">'+(isNum(x.profit_after_bounty)?money(x.profit_after_bounty):'—')+'</td><td class="num">'+(isNum(x.margin_on_income)?x.margin_on_income+'%':'—')+'</td><td class="num">'+(isNum(x.margin_on_price)?x.margin_on_price+'%':'—')+'</td></tr>'};
-  var head='<tr><th>菜品</th><th>售价</th><th>单份成本</th><th>单点到手均值</th><th>单份利润</th><th>扣赏金后</th><th>到手毛利率</th><th>标价毛利率</th></tr>';
-  g+=card('c12','💰','每道菜利润',esc(pf.caption),'<div class="tw"><table class="t">'+head+main.map(rowf).join('')+'</table></div><div class="sec" style="margin:16px 0 6px">加料</div><div class="tw"><table class="t">'+head+adds.map(rowf).join('')+'</table></div><p class="note" style="margin:10px 0 0">'+esc(pf.note)+' 标价毛利率 = (售价 − 单份成本) ÷ 售价，未扣平台费用。</p>');
- }
+function vDish(){var dm=(D.dishes||{}).main;
+ if(!dm)return '<div class="card ph">主菜出餐未汇总：运行 python3 dish_history.py --write</div>';
+ var rows=dm.rows.slice(),cur=rows.filter(function(r){return r.current}),sum=function(p,k){return rows.reduce(function(a,r){return a+r[p][k]},0)};
+ var cands=dm.bottom5_month.filter(function(x){return x.cand});
+ var kp=function(lbl,p,acc,rng){return '<section class="card kpi" style="--acc:'+acc+'"><div class="k"><span>'+lbl+'</span><span class="dot"></span></div><div class="v">'+cnt(sum(p,'n'))+' <span style="font-size:13px;font-weight:500">份</span></div><div class="n">'+PI('mt',1)+sum(p,'mt')+' '+PI('tb',1)+sum(p,'tb')+' · '+esc(rng)+'</div></section>'};
+ var k='<div class="kpis k4">'+kp('今日主菜','today','#C4DD3A',dm.range.today)+kp('本月主菜','month','#FF8A65',dm.range.month)+kp('历史累计','hist','#A88CFF',dm.range.hist.split('（')[0])+
+  '<section class="card kpi" style="--acc:#B5543C"><div class="k"><span>淘汰候选</span><span class="dot"></span></div><div class="v">'+cands.length+' <span style="font-size:13px;font-weight:500">道</span></div><div class="n">本月 ≤2 份 · 在售主菜 '+cur.length+' 道</div></section></div>';
+ var sp=function(o){return '<span class="split">'+PI('mt',1)+o.mt+' '+PI('tb',1)+o.tb+'</span>'};
+ var rk=function(title,list,bottom,sub){var mx=Math.max.apply(null,list.map(function(x){return x.n}).concat([1]));
+  return card('c3',bottom?'🔻':'🏆',title,sub,list.map(function(x,i){var c=bottom&&x.cand;return '<div style="margin:11px 0;'+(c?'background:#FBEDE8;border-radius:10px;padding:7px 8px;margin-left:-8px;margin-right:-8px':'')+'"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:12.5px"><span style="min-width:0"><b style="color:#A3ACA3;margin-right:5px">0'+(i+1)+'</b>'+esc(x.name)+(c?' <span class="pill r" style="font-size:10px;padding:0 6px">淘汰候选</span>':'')+'</span><b class="num" style="font-size:17px;white-space:nowrap">'+x.n+'<span style="font-size:10px;font-weight:400"> 份</span></b></div><div style="display:flex;align-items:center;gap:8px;margin-top:4px"><div style="flex:1">'+hbar(x.n/mx*100,bottom?(c?'#E07A5F':'#C3CBC1'):['#C4DD3A','#FF8A65','#8EE6A0','#B9A3FF','#5FCB7A'][i],6)+'</div><span class="note" style="white-space:nowrap">'+PI('mt',1)+x.mt+' '+PI('tb',1)+x.tb+'</span></div></div>'}).join(''))};
+ var g='<div class="grid">'+rk('本月前五',dm.top5_month,0,dm.range.month)+rk('本月后五',dm.bottom5_month,1,'在售主菜')+rk('历史前五',dm.top5_hist,0,dm.range.hist.split('（')[0])+rk('历史后五',dm.bottom5_hist,1,'在售主菜');
+ rows.sort(function(a,b){return (b.current-a.current)||(b.month.n-a.month.n)||(b.hist.n-a.hist.n)});
+ var cs={};dm.bottom5_month.forEach(function(x){if(x.cand)cs[x.name]=1});
+ var mx=Math.max.apply(null,rows.map(function(r){return r.month.n}).concat([1]));
+ var cell=function(o){return '<td class="num"><b>'+o.n+'</b><div class="note">'+PI('mt',1)+o.mt+' '+PI('tb',1)+o.tb+'</div></td>'};
+ var tbl='<div class="tw"><table class="t"><tr><th>主菜</th><th>今日</th><th>本月</th><th>历史</th><th style="width:26%">本月份数</th></tr>'+rows.map(function(r){var c=cs[r.name];
+  return '<tr style="'+(c?'background:#FBEDE8':'')+(r.current?'':';color:#9AA39A')+'"><td><b>'+esc(r.name)+'</b>'+(c?' <span class="pill r" style="font-size:10px;padding:0 6px">淘汰候选</span>':'')+(r.current?'':' <span class="pill" style="font-size:10px;padding:0 6px">旧菜单</span>')+'<div class="note">'+esc(r.cat)+(r.alias?' · '+esc(r.alias):'')+'</div></td>'+cell(r.today)+cell(r.month)+cell(r.hist)+'<td>'+hbar(r.month.n/mx*100,c?'#E07A5F':'#C4DD3A',6)+'</td></tr>'}).join('')+'</table></div>';
+ var zero=dm.zero_month.length?'本月没卖出：'+dm.zero_month.map(esc).join('、'):'在售主菜本月都至少卖出 1 份，没有零销量的菜。';
+ tbl+='<p class="note" style="margin:10px 0 0">'+zero+(dm.zero_hist.length?' 历史从没卖出：'+dm.zero_hist.map(esc).join('、'):'')+'</p>';
+ tbl+='<details style="margin-top:8px"><summary class="note" style="cursor:pointer">数据范围：历史 '+esc(dm.range.hist)+'；本月 '+esc(dm.range.month)+'（点开看缺口）</summary><ul class="note" style="margin:6px 0 0;padding-left:18px">'+dm.gaps.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></details>';
+ g+=card('c12','🍲','主菜出餐 · 今日 / 本月 / 历史','只算主菜，不含加料和饮品',tbl);
  return k+g+'</div>'}
 
 /* ================= 成本 ================= */
@@ -412,7 +433,7 @@ function animate(root){root.classList.remove('go');void root.offsetWidth;
  requestAnimationFrame(step)}
 function render(anim){if(!D)return;sub();
  var m=$('main'),V={home:vHome,biz:vBiz,mkt:vMkt,social:vSocial,dish:vDish,cost:vCost,fin:vFin}[S.tab];
- m.innerHTML=V()+'<details class="foot"><summary>口径（完整说明）</summary><p>'+esc(D.footer)+'</p></details>';
+ m.innerHTML=V()+(S.tab==='dish'?'':'<details class="foot"><summary>口径（完整说明）</summary><p>'+esc(D.footer)+'</p></details>');
  if($('tip'))$('tip').innerHTML=tipHTML();
  if(anim!==false)animate(m);else{m.classList.add('go');m.querySelectorAll('[data-count]').forEach(function(el){el.textContent=fmtv(parseFloat(el.getAttribute('data-count')),el.getAttribute('data-fmt'))});m.querySelectorAll('circle.f').forEach(function(c){c.style.strokeDashoffset=c.getAttribute('data-off')})}
 }
