@@ -195,10 +195,10 @@ function vHome(){
   '<div class="lbl">有效单量</div><div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><span class="hero-n">'+cnt(ord)+'</span><span style="font-size:15px;color:var(--muted)">单</span>'+
   '<span class="split" style="margin-left:10px"><span>'+PI('mt',1)+t.mt.orders+'</span><span>'+PI('tb',1)+t.tb.orders+'</span></span></div>'+
   '<div class="tiles t3" style="margin-top:14px;min-width:340px"><div class="tile"><div class="l">实付 / 营业额</div><div class="v num">'+cnt(isNum(t.mt.gmv)&&isNum(t.tb.gmv)?t.mt.gmv+t.tb.gmv:null,'money')+'</div></div><div class="tile"><div class="l">到手</div><div class="v num">'+cnt(t.mt.income+t.tb.income,'money')+'</div></div><div class="tile"><div class="l">扣赏金投流后</div><div class="v num">'+cnt(t.after?t.after.all:null,'money','未汇总')+'</div></div></div>'+
-  '</div><div style="text-align:center;flex:none">'+ring(ord,41,'#141A16',132,'保本线 41 单')+'<div class="note" style="margin-top:-6px">还差 <b style="color:#141A16">'+Math.max(0,41-ord)+'</b> 单</div></div></div>'+mini,
+  '</div><div style="text-align:center;flex:none">'+ring(ord,41,'#141A16',132,'保本线 41 单')+'<div class="note" style="margin-top:-6px">当前 '+ord+' / 目标 41（'+(ord/41*100).toFixed(1)+'%），还差 <b style="color:#141A16">'+Math.max(0,41-ord)+'</b> 单</div></div></div>'+mini,
   'background:linear-gradient(135deg,#FFFFFF 0%,#FAFDEE 100%)');
  var mp=m.progress,wp=w.progress;
- g+=card('c3','📅','本月进度','41 单 × 天',
+ g+=card('c3','📅','本月进度',(D.old_store?'新店 11-23 起 · ':'')+'41 单 × 天',
   '<div class="lbl">本月有效单</div><div style="display:flex;align-items:baseline;gap:6px;margin:4px 0 10px"><span class="big">'+cnt(mp.done)+'</span><span class="note">/ '+int(mp.target)+' · '+(mp.done/mp.target*100).toFixed(1)+'%</span></div>'+hbar(mp.done/mp.target*100,'#141A16',10)+
   '<div style="display:flex;justify-content:space-between;font-size:12.5px;margin:16px 0 6px"><span>本周</span><b class="num">'+wp.done+' / '+wp.target+'</b></div>'+hbar(wp.done/wp.target*100,'#8EE6A0',10)+
   '<div class="tiles t2" style="margin-top:16px"><div class="tile"><div class="l">本月实付</div><div class="v num" style="font-size:15px">'+show(isNum(m.mt.gmv)&&isNum(m.tb.gmv)?m.mt.gmv+m.tb.gmv:null,'money')+'</div></div><div class="tile"><div class="l">本月到手</div><div class="v num" style="font-size:15px">'+money(m.mt.income+m.tb.income)+'</div></div></div>');
@@ -209,6 +209,14 @@ function vHome(){
   '<div class="tiles t3" style="margin-top:2px;gap:6px">'+[['收入',l.month.income],['支出',l.month.expense],['利润',l.month.profit]].map(function(x,i){return '<div class="tile" style="padding:8px 9px"><div class="l">'+(i?x[0]:l.month.month.slice(5)+'月'+x[0])+'</div><div class="v num" style="font-size:13.5px'+(i===2?';color:'+(x[1]<0?'#B5543C':'#2E8B57'):'')+'">'+money(x[1],0)+'</div></div>'}).join('')+'</div>'+
   (l.missing_fixed.length?'<div class="note" style="margin-top:6px">'+l.missing_fixed.map(function(x){return x.label}).join('、')+'还没入账</div>':''))
   : card('c3','💼','财务快照','未导入','<div class="ph"><div class="nc">账本未导入</div></div>');
+ var os=D.old_store;
+ if(os){var od=os.periods&&os.periods.today,om=os.periods&&os.periods.month,oord=od?od.mt.orders+od.tb.orders:null,omi=od?od.mt.income+od.tb.income:null,oM=om?om.mt.orders+om.tb.orders:null,oMI=om?om.mt.income+om.tb.income:null,og=od&&od.gross,ob=os.bounty;
+  g+=card('c3','📦','旧店对照','截至 '+(os.last_day||'')+' · 不计入新店累计',
+   '<div class="lbl">收官日单量</div><div class="big num" style="margin:4px 0 2px">'+cnt(oord)+'</div>'+
+   '<div class="note">到手 '+show(omi,'money')+(og&&isNum(og.after)?' · 扣赏金后毛利 '+money(og.after):'')+'</div>'+
+   '<div class="tiles t2" style="margin-top:12px"><div class="tile"><div class="l">旧店本月单量</div><div class="v num" style="font-size:15px">'+cnt(oM)+'</div></div><div class="tile"><div class="l">旧店本月到手</div><div class="v num" style="font-size:15px">'+show(oMI,'money')+'</div></div></div>'+
+   (ob?'<div class="note" style="margin-top:8px">旧店赏金累计 '+ob.orders+' 单 · <b>'+money(ob.amount)+'</b></div>':'')+
+   '<div class="note" style="margin-top:4px">'+esc(os.note||'')+'</div>');}
  var soc=function(k,name){var d=D.social[k];return '<div class="row" style="padding:8px 0">'+PI(k)+'<div class="grow1"><b style="font-size:13px">'+name+'</b><div class="note">'+(d?esc((d.posts!=null?(k==='xiaohongshu'?'笔记 ':'作品 ')+d.posts:'')+(d.likes!=null?' · '+(d.likes_label||'获赞')+' '+d.likes:'')):(k==='miniapp'?'计划中 · 未接入':'未接入'))+'</div></div><div style="text-align:right"><div class="lbl">粉丝</div><div style="font-weight:780">'+(d?cnt(d.followers):'<span class="nc">未接入</span>')+'</div></div><div style="text-align:right;min-width:52px"><div class="lbl">净增</div><div style="font-weight:780">'+(d&&isNum(d.net)?cnt(d.net):'<span class="nc">未接入</span>')+'</div></div></div>'};
  var dy=D.social.douyin,lt=dy&&dy.latest;
  g+=card('c3','📱','社媒','粉丝 · 净增',soc('xiaohongshu','小红书')+soc('douyin','抖音')+soc('miniapp','微信小程序')+
@@ -274,7 +282,7 @@ function tipHTML(){var i=S.hover==null?D.days.length-1:S.hover,d=D.days[i];
 function funnel(){var f=S.plat==='all'?D.funnel.all:S.plat==='mt'?D.funnel.mt:D.funnel.tb,mx=f.exposure||1;
  var st=[['曝光',f.exposure,'#1F4D36'],['进店',f.visit,'#3C8058'],['下单',f.order,'#7CC08E']];
  var h=st.map(function(x){return '<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>'+x[0]+'</span><b class="num">'+cnt(x[1])+'</b></div>'+hbar(isNum(x[1])?Math.max(4,x[1]/mx*100):0,x[2],22)+'</div>'}).join('');
- var r=function(o,nm){return '<tr><td>'+nm+'</td><td class="num">'+(isNum(o.visit_rate)?o.visit_rate.toFixed(2)+'%':'未读到')+'</td><td class="num">'+o.peer_visit_rate+'%</td><td class="num">'+(isNum(o.order_rate)?o.order_rate.toFixed(2)+'%':'未读到')+'</td><td class="num">'+o.peer_order_rate+'%</td></tr>'};
+ var r=function(o,nm){return '<tr><td>'+nm+'</td><td class="num">'+(isNum(o.visit_rate)?o.visit_rate.toFixed(2)+'%':'未读到')+'</td><td class="num">'+(isNum(o.peer_visit_rate)?o.peer_visit_rate+'%':'未读到')+'</td><td class="num">'+(isNum(o.order_rate)?o.order_rate.toFixed(2)+'%':'未读到')+'</td><td class="num">'+(isNum(o.peer_order_rate)?o.peer_order_rate+'%':'未读到')+'</td></tr>'};
  return h+'<table class="t" style="margin-top:8px"><tr><th>转化</th><th>进店</th><th>同行</th><th>下单</th><th>同行</th></tr>'+(S.plat!=='tb'?r(D.funnel.mt,PI('mt',1)+'美团'):'')+(S.plat!=='mt'?r(D.funnel.tb,PI('tb',1)+'淘宝'):'')+'</table><p class="note" style="margin:8px 0 0">'+esc(D.funnel.note)+'</p>'}
 function platTable(){var p=P(),rows=[['有效单量','orders','int'],['实付 / 营业额','gmv','money'],['到手','income','money'],['支出','expense','money']];
  var h='<table class="t"><tr><th>项目</th><th>'+PI('mt',1)+'美团</th><th>'+PI('tb',1)+'淘宝</th><th>合计</th></tr>';
