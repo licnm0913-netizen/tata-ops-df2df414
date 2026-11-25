@@ -1,7 +1,7 @@
 /* 她她经营作战台 service worker
    - index.html / 导航 / data.json: network-first（打开就拿最新数字），断网回退缓存
    - 其他静态资源（图标、manifest）: cache-first */
-const VERSION = 'tata-v22';
+const VERSION = 'tata-v23';
 const CORE = ['./', './index.html', './data.json', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png', './icons/logo-wordmark.png', './icons/logo-wordmark-dark.png', './icons/favicon-32.png'];
 
